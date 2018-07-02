@@ -1,7 +1,7 @@
 package logical;
 
 public class Main {
-	
+	private String hola;
 	
 
 	private String miSum;
