@@ -39,6 +39,14 @@ public class Empresa {
 		this.misContratos = misContratos;
 	}
 	
+	public boolean crearProyecto() {
+		
+		return true;
+	}
+	public boolean crearContrato() {
+		
+		return true;
+	}
 	
 
 }

@@ -14,4 +14,16 @@ public class Programador extends Diseñador {
 		this.lenguajes = lenguajes;
 	}
 
+
+
+	public ArrayList<String> getLenguajes() {
+		return lenguajes;
+	}
+
+
+
+	public void setLenguajes(ArrayList<String> lenguajes) {
+		this.lenguajes = lenguajes;
+	}
+
 }
