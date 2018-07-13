@@ -7,13 +7,22 @@ public class Empresa {
 	private ArrayList<Cliente> misClientes;
 	private ArrayList<Trabajador> misTrabs;
 	private ArrayList<Contrato> misContratos;
+	private static Empresa emp = null;
 	
-	public Empresa(ArrayList<Cliente> misClientes, ArrayList<Trabajador> misTrabs, ArrayList<Contrato> misContratos) {
+	public Empresa() {
 		super();
-		this.misClientes = misClientes;
-		this.misTrabs = misTrabs;
-		this.misContratos = misContratos;
+		misClientes = new ArrayList<>();
+		misTrabs = new ArrayList<>();
+		misContratos = new ArrayList<>();
 	}
+	
+	 public static Empresa getInstance(){
+		 if(emp == null){
+			 emp = new Empresa();
+		 }
+		 
+		 return emp;
+	 } 
 
 	public ArrayList<Cliente> getMisClientes() {
 		return misClientes;
@@ -37,6 +46,18 @@ public class Empresa {
 
 	public void setMisContratos(ArrayList<Contrato> misContratos) {
 		this.misContratos = misContratos;
+	}
+	
+	public void insertCliente(Cliente aux){
+		misClientes.add(aux);
+	}
+	
+	public void insertTrabajador(Trabajador aux){
+		misTrabs.add(aux);
+	}
+	
+	public void insertContrato(Contrato aux){
+		misContratos.add(aux);
 	}
 	
 	public boolean crearProyecto() {
