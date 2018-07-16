@@ -9,7 +9,7 @@ public class Empresa {
 	private ArrayList<Contrato> misContratos;
 	private static Empresa emp = null;
 	
-	public Empresa() {
+	private Empresa() {
 		super();
 		misClientes = new ArrayList<>();
 		misTrabs = new ArrayList<>();
