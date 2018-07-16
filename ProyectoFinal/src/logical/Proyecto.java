@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 public class Proyecto {
 	
+	private String nombre;
 	private String tipo;
 	private String lenguaje;
 	private ArrayList<Trabajador> miEquipo;
 	private float montoPagar;
 	
-	public Proyecto(String tipo, String lenguaje, ArrayList<Trabajador> miEquipo, float montoPagar) {
+	public Proyecto(String nombre, String tipo, String lenguaje, ArrayList<Trabajador> miEquipo, float montoPagar) {
 		super();
+		this.nombre = nombre;
 		this.tipo = tipo;
 		this.lenguaje = lenguaje;
 		this.miEquipo = miEquipo;
@@ -47,6 +49,14 @@ public class Proyecto {
 
 	public void setMontoPagar(float montoPagar) {
 		this.montoPagar = montoPagar;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 
