@@ -9,7 +9,7 @@ public class Proyecto {
 	private String lenguaje;
 	private ArrayList<Trabajador> miEquipo;
 	private float montoPagar;
-	
+
 	public Proyecto(String nombre, String tipo, String lenguaje, ArrayList<Trabajador> miEquipo, float montoPagar) {
 		super();
 		this.nombre = nombre;
