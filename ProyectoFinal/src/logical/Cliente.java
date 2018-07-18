@@ -47,6 +47,4 @@ public class Cliente {
 		this.cantProyectos = cantProyectos;
 	}
 	
-	
-	
 }
