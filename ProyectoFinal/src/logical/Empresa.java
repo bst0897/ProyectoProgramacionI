@@ -2,6 +2,8 @@ package logical;
 
 import java.util.ArrayList;
 
+
+
 public class Empresa {
 	
 	private ArrayList<Cliente> misClientes;
@@ -67,6 +69,17 @@ public class Empresa {
 	public boolean crearContrato() {
 		
 		return true;
+	}
+	public void ModificarCliente(Cliente cli){
+		boolean encontrado = false;
+		int i=0;
+		while (i<misClientes.size()&&!encontrado) {
+			if(misClientes.get(i).getIdentificador().equalsIgnoreCase(cli.getIdentificador())) {
+				encontrado = true;
+				cli = misClientes.get(i) ;
+			}
+			i++;
+		}
 	}
 	
 

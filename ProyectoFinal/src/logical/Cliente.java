@@ -7,12 +7,12 @@ public class Cliente {
 	private String direccion;
 	private int cantProyectos;
 	
-	public Cliente(String identificador, String nombre, String direccion, int cantProyectos) {
+	public Cliente(String identificador, String nombre, String direccion) {
 		super();
 		this.identificador = identificador;
 		this.nombre = nombre;
 		this.direccion = direccion;
-		this.cantProyectos = cantProyectos;
+		
 	}
 
 	public String getIdentificador() {

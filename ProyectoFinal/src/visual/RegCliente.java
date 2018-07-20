@@ -8,6 +8,8 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
@@ -16,6 +18,10 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+
+import logical.Cliente;
+import logical.Empresa;
+
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.event.ActionListener;
@@ -26,28 +32,22 @@ import javax.swing.border.BevelBorder;
 public class RegCliente extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			RegCliente dialog = new RegCliente();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Create the dialog.
-	 */
-	public RegCliente() {
+	private JTextField txtCedula;
+	private JTextField txtNombre;
+	private JTextField txtDireccion;
+	private Cliente cliente;
+			
+	
+		public RegCliente(Cliente cli) {
+			this.cliente = cli;
+			setResizable(false);
+			if(cli == null){
+			setTitle("Registro de Clientes");
+			}else{
+			  setTitle("Modificar Cliente");	
+			}		
 		setTitle("Registro de Clientes");
-		setBounds(100, 100, 465, 261);
+		setBounds(100, 100, 465, 289);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -63,30 +63,30 @@ public class RegCliente extends JDialog {
 			lblCdula.setBounds(10, 24, 70, 14);
 			panel.add(lblCdula);
 			
-			textField = new JTextField();
-			textField.setColumns(10);
-			textField.setBounds(10, 49, 156, 20);
-			panel.add(textField);
+			txtCedula = new JTextField();
+			txtCedula.setColumns(10);
+			txtCedula.setBounds(10, 49, 156, 20);
+			panel.add(txtCedula);
 			
 			JLabel lblNombreCompleto = new JLabel("Nombre Completo:");
 			lblNombreCompleto.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 			lblNombreCompleto.setBounds(204, 24, 110, 14);
 			panel.add(lblNombreCompleto);
 			
-			textField_1 = new JTextField();
-			textField_1.setColumns(10);
-			textField_1.setBounds(204, 49, 218, 20);
-			panel.add(textField_1);
+			txtNombre = new JTextField();
+			txtNombre.setColumns(10);
+			txtNombre.setBounds(204, 49, 218, 20);
+			panel.add(txtNombre);
 			
 			JLabel lblDireccin = new JLabel("Direcci\u00F3n:");
 			lblDireccin.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 			lblDireccin.setBounds(10, 93, 70, 14);
 			panel.add(lblDireccin);
 			
-			JTextArea textArea = new JTextArea();
-			textArea.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			textArea.setBounds(20, 118, 294, 60);
-			panel.add(textArea);
+			JTextArea txtDireccion = new JTextArea();
+			txtDireccion.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+			txtDireccion.setBounds(20, 118, 294, 60);
+			panel.add(txtDireccion);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -94,6 +94,28 @@ public class RegCliente extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Registrar");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+					
+						if(cli==null) {
+							Cliente cli = new Cliente(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText());
+							Empresa.getInstance().insertCliente(cli);
+							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+							clean();
+							}
+						else{
+								
+								cli.setIdentificador(txtCedula.getText());
+								cli.setNombre(txtNombre.getText());
+								cli.setDireccion(txtDireccion.getText());
+								Empresa.getInstance().ModificarCliente(cli);
+								JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+								dispose();
+							}
+
+					
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -110,4 +132,9 @@ public class RegCliente extends JDialog {
 			}
 		}
 	}
+		private void clean() {
+			txtNombre.setText("");
+			txtCedula.setText("");
+			txtDireccion.setText("");
+		}
 }
