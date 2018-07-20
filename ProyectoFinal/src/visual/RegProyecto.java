@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.border.BevelBorder;
 
 public class RegProyecto extends JDialog {
 
@@ -77,10 +78,12 @@ public class RegProyecto extends JDialog {
 		contentPanel.add(cbxCliente);
 		
 		JList lsTrabDisp = new JList();
+		lsTrabDisp.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		lsTrabDisp.setBounds(38, 189, 161, 96);
 		contentPanel.add(lsTrabDisp);
 		
 		JList lsEquipo = new JList();
+		lsEquipo.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		lsEquipo.setBounds(304, 189, 161, 96);
 		contentPanel.add(lsEquipo);
 		
