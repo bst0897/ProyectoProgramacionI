@@ -20,13 +20,14 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+import javax.swing.border.BevelBorder;
 
 public class RegCliente extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -82,20 +83,10 @@ public class RegCliente extends JDialog {
 			label_1.setBounds(10, 93, 70, 14);
 			panel.add(label_1);
 			
-			textField_2 = new JTextField();
-			textField_2.setColumns(10);
-			textField_2.setBounds(10, 124, 245, 20);
-			panel.add(textField_2);
-			
-			JSpinner spinner = new JSpinner();
-			spinner.setModel(new SpinnerNumberModel(1, 1, 5, 1));
-			spinner.setBounds(282, 124, 45, 20);
-			panel.add(spinner);
-			
-			JLabel lblCantidadDePoryectos = new JLabel("Cantidad de Poryectos");
-			lblCantidadDePoryectos.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-			lblCantidadDePoryectos.setBounds(279, 93, 126, 14);
-			panel.add(lblCantidadDePoryectos);
+			JTextArea textArea = new JTextArea();
+			textArea.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+			textArea.setBounds(20, 118, 294, 60);
+			panel.add(textArea);
 		}
 		{
 			JPanel buttonPane = new JPanel();

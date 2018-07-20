@@ -56,7 +56,7 @@ public class RegTrabajador extends JDialog {
 			panel.add(textField);
 			textField.setColumns(10);
 			{
-				JLabel lblDirreccion = new JLabel("Dirreccion:");
+				JLabel lblDirreccion = new JLabel("Direccion:");
 				lblDirreccion.setBounds(12, 65, 70, 16);
 				panel.add(lblDirreccion);
 			}
