@@ -56,7 +56,7 @@ public class RegTrabajador extends JDialog {
 			panel.add(textField);
 			textField.setColumns(10);
 			{
-				JLabel lblDirreccion = new JLabel("Direccion:");
+				JLabel lblDirreccion = new JLabel("Direcci\u00F3n:");
 				lblDirreccion.setBounds(12, 65, 70, 16);
 				panel.add(lblDirreccion);
 			}
@@ -67,7 +67,7 @@ public class RegTrabajador extends JDialog {
 				textField_1.setColumns(10);
 			}
 			{
-				JLabel lblNewLabel = new JLabel("Cedula:");
+				JLabel lblNewLabel = new JLabel("C\u00E9dula:");
 				lblNewLabel.setBounds(12, 94, 59, 16);
 				panel.add(lblNewLabel);
 			}
@@ -78,7 +78,7 @@ public class RegTrabajador extends JDialog {
 				textField_2.setColumns(10);
 			}
 			{
-				JLabel lblPosicion = new JLabel("Posicion:");
+				JLabel lblPosicion = new JLabel("Posici\u00F3n:");
 				lblPosicion.setBounds(12, 133, 56, 16);
 				panel.add(lblPosicion);
 			}
@@ -87,7 +87,7 @@ public class RegTrabajador extends JDialog {
 			comboBox.setBounds(124, 130, 133, 22);
 			panel.add(comboBox);
 			
-			JLabel lblLenguajes = new JLabel("Lenguajes*:");
+			JLabel lblLenguajes = new JLabel("Lenguajes:");
 			lblLenguajes.setBounds(12, 168, 83, 16);
 			panel.add(lblLenguajes);
 			

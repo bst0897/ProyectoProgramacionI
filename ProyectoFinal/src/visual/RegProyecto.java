@@ -45,19 +45,19 @@ public class RegProyecto extends JDialog {
 		contentPanel.setLayout(null);
 		
 		JLabel lblNombreDelSoftware = new JLabel("Nombre del Software:");
-		lblNombreDelSoftware.setBounds(10, 25, 121, 14);
+		lblNombreDelSoftware.setBounds(10, 25, 128, 14);
 		contentPanel.add(lblNombreDelSoftware);
 		
 		JLabel lblFechaInicio = new JLabel("Fecha Inicio:");
-		lblFechaInicio.setBounds(262, 25, 66, 14);
+		lblFechaInicio.setBounds(289, 25, 80, 14);
 		contentPanel.add(lblFechaInicio);
 		
 		JLabel lblFechaFin = new JLabel("Fecha Fin:");
-		lblFechaFin.setBounds(262, 61, 66, 14);
+		lblFechaFin.setBounds(289, 61, 66, 14);
 		contentPanel.add(lblFechaFin);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(123, 22, 86, 20);
+		txtNombre.setBounds(138, 22, 137, 20);
 		contentPanel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
@@ -66,15 +66,15 @@ public class RegProyecto extends JDialog {
 		contentPanel.add(lblTipo);
 		
 		JComboBox cbxTipo = new JComboBox();
-		cbxTipo.setBounds(123, 61, 86, 20);
+		cbxTipo.setBounds(138, 58, 137, 20);
 		contentPanel.add(cbxTipo);
 		
 		JLabel lblCliente = new JLabel("Cliente");
-		lblCliente.setBounds(10, 109, 46, 14);
+		lblCliente.setBounds(10, 109, 58, 14);
 		contentPanel.add(lblCliente);
 		
 		JComboBox cbxCliente = new JComboBox();
-		cbxCliente.setBounds(123, 106, 86, 20);
+		cbxCliente.setBounds(138, 106, 137, 20);
 		contentPanel.add(cbxCliente);
 		
 		JList lsTrabDisp = new JList();
@@ -88,11 +88,11 @@ public class RegProyecto extends JDialog {
 		contentPanel.add(lsEquipo);
 		
 		JLabel lblTrabajadoresDisponibles = new JLabel("Trabajadores Disponibles");
-		lblTrabajadoresDisponibles.setBounds(58, 164, 121, 14);
+		lblTrabajadoresDisponibles.setBounds(58, 164, 166, 14);
 		contentPanel.add(lblTrabajadoresDisponibles);
 		
 		JLabel lblEquipoDeProyecto = new JLabel("Equipo de Proyecto");
-		lblEquipoDeProyecto.setBounds(334, 164, 93, 14);
+		lblEquipoDeProyecto.setBounds(334, 164, 111, 14);
 		contentPanel.add(lblEquipoDeProyecto);
 		
 		JButton btnAgregar = new JButton("->");
@@ -105,12 +105,12 @@ public class RegProyecto extends JDialog {
 		
 		txtFechIni = new JTextField();
 		txtFechIni.setEditable(false);
-		txtFechIni.setBounds(341, 22, 86, 20);
+		txtFechIni.setBounds(365, 22, 100, 20);
 		contentPanel.add(txtFechIni);
 		txtFechIni.setColumns(10);
 		
 		txtFechFin = new JTextField();
-		txtFechFin.setBounds(341, 58, 86, 20);
+		txtFechFin.setBounds(365, 58, 100, 20);
 		contentPanel.add(txtFechFin);
 		txtFechFin.setColumns(10);
 		{

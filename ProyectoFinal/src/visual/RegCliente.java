@@ -58,17 +58,17 @@ public class RegCliente extends JDialog {
 			contentPanel.add(panel);
 			panel.setLayout(null);
 			
-			JLabel label = new JLabel("C\u00E9dula");
-			label.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-			label.setBounds(10, 24, 70, 14);
-			panel.add(label);
+			JLabel lblCdula = new JLabel("C\u00E9dula:");
+			lblCdula.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+			lblCdula.setBounds(10, 24, 70, 14);
+			panel.add(lblCdula);
 			
 			textField = new JTextField();
 			textField.setColumns(10);
 			textField.setBounds(10, 49, 156, 20);
 			panel.add(textField);
 			
-			JLabel lblNombreCompleto = new JLabel("Nombre Completo");
+			JLabel lblNombreCompleto = new JLabel("Nombre Completo:");
 			lblNombreCompleto.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 			lblNombreCompleto.setBounds(204, 24, 110, 14);
 			panel.add(lblNombreCompleto);
@@ -78,10 +78,10 @@ public class RegCliente extends JDialog {
 			textField_1.setBounds(204, 49, 218, 20);
 			panel.add(textField_1);
 			
-			JLabel label_1 = new JLabel("Direcci\u00F3n");
-			label_1.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-			label_1.setBounds(10, 93, 70, 14);
-			panel.add(label_1);
+			JLabel lblDireccin = new JLabel("Direcci\u00F3n:");
+			lblDireccin.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+			lblDireccin.setBounds(10, 93, 70, 14);
+			panel.add(lblDireccin);
 			
 			JTextArea textArea = new JTextArea();
 			textArea.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
