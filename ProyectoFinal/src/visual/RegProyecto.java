@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -12,13 +13,17 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.border.BevelBorder;
+import com.toedter.calendar.JDateChooser;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class RegProyecto extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtNombre;
 	private JTextField txtFechIni;
-	private JTextField txtFechFin;
 
 	/**
 	 * Launch the application.
@@ -56,25 +61,28 @@ public class RegProyecto extends JDialog {
 		lblFechaFin.setBounds(289, 61, 66, 14);
 		contentPanel.add(lblFechaFin);
 		
+		
 		txtNombre = new JTextField();
 		txtNombre.setBounds(138, 22, 137, 20);
 		contentPanel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		JLabel lblTipo = new JLabel("Tipo:");
-		lblTipo.setBounds(10, 61, 46, 14);
+		lblTipo.setBounds(10, 103, 46, 14);
 		contentPanel.add(lblTipo);
 		
 		JComboBox cbxTipo = new JComboBox();
-		cbxTipo.setBounds(138, 58, 137, 20);
+		cbxTipo.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Web", "Sistema Operativo", "Administracion/Contabilidad", "IDE", "Educativo", "Otro/a"}));
+		cbxTipo.setBounds(138, 103, 137, 20);
 		contentPanel.add(cbxTipo);
 		
-		JLabel lblCliente = new JLabel("Cliente");
-		lblCliente.setBounds(10, 109, 58, 14);
+		JLabel lblCliente = new JLabel("Cliente:");
+		lblCliente.setBounds(10, 61, 58, 14);
 		contentPanel.add(lblCliente);
 		
 		JComboBox cbxCliente = new JComboBox();
-		cbxCliente.setBounds(138, 106, 137, 20);
+		cbxCliente.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>"}));
+		cbxCliente.setBounds(138, 58, 137, 20);
 		contentPanel.add(cbxCliente);
 		
 		JList lsTrabDisp = new JList();
@@ -109,22 +117,34 @@ public class RegProyecto extends JDialog {
 		contentPanel.add(txtFechIni);
 		txtFechIni.setColumns(10);
 		
-		txtFechFin = new JTextField();
-		txtFechFin.setBounds(365, 58, 100, 20);
-		contentPanel.add(txtFechFin);
-		txtFechFin.setColumns(10);
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(365, 61, 100, 20);
+		contentPanel.add(dateChooser);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				JButton okButton = new JButton("Siguiente");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						//RegContrato rgContrato = new RegContrato();
+						//rgContrato.setVisible(true);
+						//rgContrato.setLocationRelativeTo(null);
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
+				cancelButton.addActionListener(new ActionListener() {
+					
+					public void actionPerformed(ActionEvent e) {
+					dispose();
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
