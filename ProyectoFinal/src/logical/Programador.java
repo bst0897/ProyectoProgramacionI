@@ -8,9 +8,8 @@ public class Programador extends Diseñador {
     
 	
 	
-	public Programador(String id, String nomCom, String dir, String sexo, int edad, double salario, String nomProy,
-			String evalAnual, boolean disponible, ArrayList <String> lenguajes) {
-		super(id, nomCom, dir, sexo, edad, salario, nomProy, evalAnual, disponible);
+	public Programador(String id, String nomCom, String dir, String sexo, int edad, double salario, ArrayList <String> lenguajes) {
+		super(id, nomCom, dir, sexo, edad, salario);
 		this.lenguajes = lenguajes;
 	}
 

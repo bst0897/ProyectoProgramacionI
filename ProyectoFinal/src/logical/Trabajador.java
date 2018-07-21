@@ -11,8 +11,7 @@ public abstract class Trabajador {
 	protected String evalAnual;
 	protected boolean disponible;
 	
-	public Trabajador(String id, String nomCom, String dir, String sexo, int edad, double salario, String nomProy,
-			String evalAnual,boolean disponible) {
+	public Trabajador(String id, String nomCom, String dir, String sexo, int edad, double salario) {
 		super();
 		this.id = id;
 		this.nomCom = nomCom;
@@ -20,9 +19,6 @@ public abstract class Trabajador {
 		this.sexo = sexo;
 		this.edad = edad;
 		this.salario = salario;
-		this.nomProy = nomProy;
-		this.evalAnual = evalAnual;
-		this.disponible =disponible;
 	}
 
 	public boolean isDisponible() {
