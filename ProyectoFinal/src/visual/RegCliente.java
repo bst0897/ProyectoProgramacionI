@@ -37,15 +37,14 @@ public class RegCliente extends JDialog {
 	private JTextField txtDireccion;
 	private Cliente cliente;
 			
-	
-		public RegCliente(Cliente cli) {
-			this.cliente = cli;
-			setResizable(false);
-			if(cli == null){
+	public RegCliente(Cliente cli) {
+		this.cliente = cli;
+		setResizable(false);
+		if(cli == null){
 			setTitle("Registro de Clientes");
-			}else{
+		}else{
 			  setTitle("Modificar Cliente");	
-			}		
+		}		
 		setTitle("Registro de Clientes");
 		setBounds(100, 100, 465, 289);
 		getContentPane().setLayout(new BorderLayout());
@@ -93,10 +92,14 @@ public class RegCliente extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("Registrar");
+				JButton okButton = new JButton("");
+				if(cli == null){
+					 okButton.setText("Registrar");
+					}else{
+					 okButton.setText("Modificar");	
+					}
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-					
 						if(cli==null) {
 							Cliente cli = new Cliente(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText());
 							Empresa.getInstance().insertCliente(cli);
@@ -104,16 +107,13 @@ public class RegCliente extends JDialog {
 							clean();
 							}
 						else{
-								
-								cli.setIdentificador(txtCedula.getText());
-								cli.setNombre(txtNombre.getText());
-								cli.setDireccion(txtDireccion.getText());
-								Empresa.getInstance().ModificarCliente(cli);
-								JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
-								dispose();
+							cli.setIdentificador(txtCedula.getText());
+							cli.setNombre(txtNombre.getText());
+							cli.setDireccion(txtDireccion.getText());
+							Empresa.getInstance().ModificarCliente(cli);
+							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+							dispose();
 							}
-
-					
 					}
 				});
 				okButton.setActionCommand("OK");

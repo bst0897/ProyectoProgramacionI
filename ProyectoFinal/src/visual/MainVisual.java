@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logical.Cliente;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -13,8 +16,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MainVisual extends JFrame {
-
 	private JPanel contentPane;
+	private Cliente cliente;
 
 	/**
 	 * Launch the application.
@@ -51,8 +54,9 @@ public class MainVisual extends JFrame {
 		mntmRegistrarProyecto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegProyecto rgProyecto = new RegProyecto();
-				rgProyecto.setVisible(true);
 				rgProyecto.setLocationRelativeTo(null);
+				rgProyecto.setModal(true);
+				rgProyecto.setVisible(true);
 			}
 		});
 		mnProyectos.add(mntmRegistrarProyecto);
@@ -61,8 +65,9 @@ public class MainVisual extends JFrame {
 		mntmListadoDeProyectos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ListaProyectos lsProyectos = new ListaProyectos();
-				lsProyectos.setVisible(true);
 				lsProyectos.setLocationRelativeTo(null);
+				lsProyectos.setModal(true);
+				lsProyectos.setVisible(true);
 			}
 		});
 		mnProyectos.add(mntmListadoDeProyectos);
@@ -71,9 +76,25 @@ public class MainVisual extends JFrame {
 		menuBar.add(mnClientes);
 		
 		JMenuItem mntmRegistrarCliente = new JMenuItem("Registrar Cliente");
+		mntmRegistrarCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				RegCliente rgcliente = new RegCliente(cliente);
+				rgcliente.setLocationRelativeTo(null);
+				rgcliente.setModal(true);
+				rgcliente.setVisible(true);
+			}
+		});
 		mnClientes.add(mntmRegistrarCliente);
 		
 		JMenuItem mntmListadoDeClientes = new JMenuItem("Listado de Clientes");
+		mntmListadoDeClientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ListarClientes lsClientes = new ListarClientes();
+				lsClientes.setLocationRelativeTo(null);
+				lsClientes.setModal(true);
+				lsClientes.setVisible(true);
+			}
+		});
 		mnClientes.add(mntmListadoDeClientes);
 		
 		JMenu mnTrabajadores = new JMenu("Trabajadores");

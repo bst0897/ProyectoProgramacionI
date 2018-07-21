@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 
+
 public class Empresa {
 	
 	private ArrayList<Cliente> misClientes;
@@ -80,6 +81,24 @@ public class Empresa {
 			}
 			i++;
 		}
+	}
+
+	public Cliente BuscarCliente(String cedula) {
+		Cliente cli=null;
+		boolean find = false;
+		int i=0;
+		while (i<misClientes.size()&&!find) {
+			if(misClientes.get(i).getIdentificador().equalsIgnoreCase(cedula)){
+				cli = misClientes.get(i);
+				find = true;
+			}
+			i++;
+		}
+		return cli;
+	}
+
+	public void removeCliente(Cliente aux) {
+		misClientes.remove(aux);
 	}
 	
 
