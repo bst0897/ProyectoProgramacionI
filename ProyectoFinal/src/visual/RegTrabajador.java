@@ -14,6 +14,8 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JSpinner;
+import javax.swing.JRadioButton;
+import javax.swing.SpinnerNumberModel;
 
 public class RegTrabajador extends JDialog {
 
@@ -27,6 +29,12 @@ public class RegTrabajador extends JDialog {
 	private JSpinner spnCantTrab;
 	private JLabel lblLenguajes; 
 	private JLabel lblCantidadDeTrabajadores;
+	private JTextField txtfrecuenciaTarea;
+	private JRadioButton rdbjefe;
+	private JRadioButton rdbdise;
+	private JRadioButton rdbprogramador;
+	private JRadioButton rdbplanificador;
+	private JLabel lblNewLabel_4;
 
 	
 	public static void main(String[] args) {
@@ -44,7 +52,7 @@ public class RegTrabajador extends JDialog {
 	 */
 	public RegTrabajador() {
 		setTitle("Registrar Trabajador");
-		setBounds(100, 100, 661, 327);
+		setBounds(100, 100, 674, 381);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -55,74 +63,47 @@ public class RegTrabajador extends JDialog {
 			panel.setLayout(null);
 			
 			JLabel lblNombre = new JLabel("Nombre Completo:");
-			lblNombre.setBounds(10, 61, 116, 16);
+			lblNombre.setBounds(10, 34, 116, 16);
 			panel.add(lblNombre);
 			
 			txtNombre = new JTextField();
-			txtNombre.setBounds(169, 58, 245, 22);
+			txtNombre.setBounds(169, 31, 245, 22);
 			panel.add(txtNombre);
 			txtNombre.setColumns(10);
 			{
 				JLabel lblDirreccion = new JLabel("Direcci\u00F3n:");
-				lblDirreccion.setBounds(10, 122, 70, 16);
+				lblDirreccion.setBounds(10, 104, 70, 16);
 				panel.add(lblDirreccion);
 			}
 			{
 				txtDireccion = new JTextField();
-				txtDireccion.setBounds(169, 119, 245, 22);
+				txtDireccion.setBounds(169, 101, 245, 22);
 				panel.add(txtDireccion);
 				txtDireccion.setColumns(10);
 			}
 			{
 				JLabel lblNewLabel = new JLabel("C\u00E9dula:");
-				lblNewLabel.setBounds(10, 88, 59, 16);
+				lblNewLabel.setBounds(10, 75, 59, 16);
 				panel.add(lblNewLabel);
 			}
 			{
 				txtCedula = new JTextField();
-				txtCedula.setBounds(169, 86, 245, 22);
+				txtCedula.setBounds(169, 66, 245, 22);
 				panel.add(txtCedula);
 				txtCedula.setColumns(10);
 			}
 			{
-				JLabel lblPosicion = new JLabel("Posici\u00F3n:");
-				lblPosicion.setBounds(10, 34, 56, 16);
+				JLabel lblPosicion = new JLabel("Posici\u00F3n Del Trabajador:");
+				lblPosicion.setBounds(83, 136, 162, 16);
 				panel.add(lblPosicion);
 			}
 			
-			JComboBox cbxPosicion = new JComboBox();
-			cbxPosicion.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					if(cbxPosicion.getSelectedItem().toString().equalsIgnoreCase("Diseñador")) {
-						txtLenguajes.setVisible(false);
-						spnCantTrab.setVisible(false);
-						lblLenguajes.setVisible(false);
-						lblCantidadDeTrabajadores.setVisible(false);
-					}
-					if(cbxPosicion.getSelectedItem().toString().equalsIgnoreCase("Jefe de Proyecto")) {
-						txtLenguajes.setVisible(false);
-						//spnCantTrab.setVisible(false);
-						lblLenguajes.setVisible(false);
-					//	lblCantidadDeTrabajadores.setVisible(false);
-					}
-					if(cbxPosicion.getSelectedItem().toString().equalsIgnoreCase("Programador")) {
-						//txtLenguajes.setVisible(false);
-						spnCantTrab.setVisible(false);
-						//lblLenguajes.setVisible(false);
-						lblCantidadDeTrabajadores.setVisible(false);
-					}
-				}
-			});
-			cbxPosicion.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Jefe de proyecto", "Dise\u00F1ador", "Programador", "Planificador"}));
-			cbxPosicion.setBounds(169, 31, 124, 22);
-			panel.add(cbxPosicion);
-			
 			JLabel lblLenguajes = new JLabel("Lenguaje Especializacion:");
-			lblLenguajes.setBounds(10, 149, 149, 16);
+			lblLenguajes.setBounds(326, 189, 149, 16);
 			panel.add(lblLenguajes);
 			
 			txtLenguajes = new JTextField();
-			txtLenguajes.setBounds(169, 152, 150, 22);
+			txtLenguajes.setBounds(487, 186, 136, 22);
 			panel.add(txtLenguajes);
 			txtLenguajes.setColumns(10);
 			
@@ -132,34 +113,138 @@ public class RegTrabajador extends JDialog {
 			
 			JComboBox cbxSexo = new JComboBox();
 			cbxSexo.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Masculino", "Femenino"}));
-			cbxSexo.setBounds(501, 31, 107, 22);
+			cbxSexo.setBounds(501, 31, 106, 22);
 			panel.add(cbxSexo);
 			
 			JLabel lblNewLabel_1 = new JLabel("Edad:");
-			lblNewLabel_1.setBounds(447, 61, 44, 16);
+			lblNewLabel_1.setBounds(447, 75, 44, 16);
 			panel.add(lblNewLabel_1);
 			
 			txtEdad = new JTextField();
-			txtEdad.setBounds(501, 58, 83, 22);
+			txtEdad.setBounds(501, 69, 106, 22);
 			panel.add(txtEdad);
 			txtEdad.setColumns(10);
 			
 			JLabel lblNewLabel_2 = new JLabel("Sueldo:");
-			lblNewLabel_2.setBounds(447, 88, 44, 16);
+			lblNewLabel_2.setBounds(447, 104, 44, 16);
 			panel.add(lblNewLabel_2);
 			
 			txtSueldo = new JTextField();
-			txtSueldo.setBounds(501, 85, 83, 22);
+			txtSueldo.setBounds(501, 101, 106, 22);
 			panel.add(txtSueldo);
 			txtSueldo.setColumns(10);
 			
 			JSpinner spnCantTrab = new JSpinner();
-			spnCantTrab.setBounds(169, 183, 29, 20);
+			spnCantTrab.setModel(new SpinnerNumberModel(2, 2, 4, 1));
+			spnCantTrab.setBounds(488, 187, 29, 20);
 			panel.add(spnCantTrab);
 			
 			JLabel lblCantidadDeTrabajadores = new JLabel("Cantidad de Trabajadores:");
-			lblCantidadDeTrabajadores.setBounds(10, 185, 163, 16);
+			lblCantidadDeTrabajadores.setBounds(328, 189, 163, 16);
 			panel.add(lblCantidadDeTrabajadores);
+			
+			JLabel lblNewLabel_3 = new JLabel("$");
+			lblNewLabel_3.setBounds(617, 104, 29, 16);
+			panel.add(lblNewLabel_3);
+			
+			rdbjefe = new JRadioButton("Jefe De Proyecto");
+			rdbjefe.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					rdbjefe.setSelected(true);
+					rdbprogramador.setSelected(false);
+					rdbdise.setSelected(false);
+					rdbplanificador.setSelected(false);
+					txtfrecuenciaTarea.setVisible(false);
+					txtLenguajes.setVisible(false);
+					spnCantTrab.setVisible(true);
+					lblCantidadDeTrabajadores.setVisible(true);
+					lblLenguajes.setVisible(false);
+					lblNewLabel_4.setVisible(false);
+				}
+			});
+			rdbjefe.setBounds(10, 162, 127, 25);
+			panel.add(rdbjefe);
+			
+			rdbdise = new JRadioButton("Dise\u00F1ador");
+			rdbdise.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					rdbjefe.setSelected(false);
+					rdbprogramador.setSelected(false);
+					rdbdise.setSelected(true);
+					rdbplanificador.setSelected(false);
+					txtfrecuenciaTarea.setVisible(false);
+					txtLenguajes.setVisible(false);
+					spnCantTrab.setVisible(false);
+					lblCantidadDeTrabajadores.setVisible(false);
+					lblLenguajes.setVisible(false);
+					lblNewLabel_4.setVisible(false);
+				}
+			});
+			rdbdise.setBounds(190, 162, 106, 25);
+			panel.add(rdbdise);
+			
+			rdbprogramador = new JRadioButton("Programador");
+			rdbprogramador.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					rdbjefe.setSelected(false);
+					rdbprogramador.setSelected(true);
+					rdbdise.setSelected(false);
+					rdbplanificador.setSelected(false);
+					txtfrecuenciaTarea.setVisible(false);
+					txtLenguajes.setVisible(true);
+					spnCantTrab.setVisible(false);
+					lblCantidadDeTrabajadores.setVisible(false);
+					lblLenguajes.setVisible(true);
+					lblNewLabel_4.setVisible(false);
+				}
+			});
+			rdbprogramador.setBounds(10, 201, 127, 25);
+			panel.add(rdbprogramador);
+			
+			rdbplanificador = new JRadioButton("Planificador");
+			rdbplanificador.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					rdbjefe.setSelected(false);
+					rdbprogramador.setSelected(false);
+					rdbdise.setSelected(false);
+					rdbplanificador.setSelected(true);
+					txtfrecuenciaTarea.setVisible(true);
+					txtLenguajes.setVisible(false);
+					spnCantTrab.setVisible(false);
+					lblCantidadDeTrabajadores.setVisible(false);
+					lblLenguajes.setVisible(false);
+					lblNewLabel_4.setVisible(true);
+				}
+				
+			});
+			
+			rdbplanificador.setBounds(190, 201, 106, 25);
+			panel.add(rdbplanificador);
+			
+			lblNewLabel_4 = new JLabel("Frecuencia de tareas:");
+			lblNewLabel_4.setBounds(326, 189, 149, 16);
+			panel.add(lblNewLabel_4);
+			
+			txtfrecuenciaTarea = new JTextField();
+			txtfrecuenciaTarea.setBounds(487, 186, 136, 22);
+			panel.add(txtfrecuenciaTarea);
+			txtfrecuenciaTarea.setColumns(10);
+			
+			JLabel label = new JLabel("");
+			
+			label.setBounds(513, 166, 56, 16);
+			panel.add(label);
+			rdbjefe.setSelected(true);
+			rdbprogramador.setSelected(false);
+			rdbdise.setSelected(false);
+			rdbplanificador.setSelected(false);
+			txtfrecuenciaTarea.setVisible(false);
+			txtLenguajes.setVisible(false);
+			spnCantTrab.setVisible(true);
+			lblCantidadDeTrabajadores.setVisible(true);
+			lblLenguajes.setVisible(false);
+			lblNewLabel_4.setVisible(false);
+			
 		}
 		{
 			JPanel buttonPane = new JPanel();

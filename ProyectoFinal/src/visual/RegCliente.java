@@ -36,6 +36,7 @@ public class RegCliente extends JDialog {
 	private JTextField txtNombre;
 	private JTextField txtDireccion;
 	private Cliente cliente;
+	private JTextArea txtDireccion_1;
 			
 	public RegCliente(Cliente cli) {
 		this.cliente = cli;
@@ -82,10 +83,10 @@ public class RegCliente extends JDialog {
 			lblDireccin.setBounds(10, 93, 70, 14);
 			panel.add(lblDireccin);
 			
-			JTextArea txtDireccion = new JTextArea();
-			txtDireccion.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			txtDireccion.setBounds(20, 118, 294, 60);
-			panel.add(txtDireccion);
+			txtDireccion_1 = new JTextArea();
+			txtDireccion_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+			txtDireccion_1.setBounds(20, 118, 294, 60);
+			panel.add(txtDireccion_1);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -98,11 +99,12 @@ public class RegCliente extends JDialog {
 					}else{
 					 okButton.setText("Modificar");	
 					}
+				
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						if(cli==null) {
-							Cliente cli = new Cliente(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText());
-							Empresa.getInstance().insertCliente(cli);
+							Cliente aux = new Cliente(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText());
+							Empresa.getInstance().insertCliente(aux);
 							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 							}
