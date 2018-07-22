@@ -7,7 +7,14 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logical.Diseñador;
+import logical.Empresa;
+import logical.JefeDeProyecto;
+import logical.Trabajador;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -27,6 +34,7 @@ public class RegTrabajador extends JDialog {
 	private JTextField txtEdad;
 	private JTextField txtSueldo;
 	private JSpinner spnCantTrab;
+	private JComboBox cbxSexo;
 	private JLabel lblLenguajes; 
 	private JLabel lblCantidadDeTrabajadores;
 	private JTextField txtfrecuenciaTarea;
@@ -252,6 +260,23 @@ public class RegTrabajador extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("Registrar");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						Trabajador aux = null;
+						int edad = new Integer(txtEdad.getText());
+						Double sueldo = new Double(txtSueldo.getText());
+						String sexo = cbxSexo.getSelectedItem().toString();
+						if(rdbdise.isSelected()) {
+							aux = new Diseñador(txtCedula.getText(), txtNombre.getText(),txtDireccion.getText(), sexo, edad, sueldo);
+						}
+						if(rdbjefe.isSelected()) {
+							aux = new JefeDeProyecto(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), cbxSexo.getSelectedItem().toString(), new Integer(txtEdad.getText()), new Float(txtSueldo.getText()), Integer.valueOf(spnCantTrab.getValue().toString()));
+						}
+						Empresa.getInstance().insertTrabajador(aux);
+						JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+						clean();
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -267,5 +292,16 @@ public class RegTrabajador extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+
+	private void clean() {
+		txtCedula.setText("");
+		txtDireccion.setText("");
+		txtEdad.setText("");
+		txtfrecuenciaTarea.setText("");
+		txtLenguajes.setText("");
+		txtNombre.setText("");
+		txtSueldo.setText("");
+		cbxSexo.setSelectedIndex(0);
 	}
 }

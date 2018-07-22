@@ -101,6 +101,14 @@ public class MainVisual extends JFrame {
 		menuBar.add(mnTrabajadores);
 		
 		JMenuItem mntmRegistrarTrabajador = new JMenuItem("Registrar Trabajador");
+		mntmRegistrarTrabajador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				RegTrabajador rgtrab = new RegTrabajador();
+				rgtrab.setLocationRelativeTo(null);
+				rgtrab.setModal(true);
+				rgtrab.setVisible(true);
+			}
+		});
 		mnTrabajadores.add(mntmRegistrarTrabajador);
 		
 		JMenuItem mntmListadoDeTrabajadores = new JMenuItem("Listado de Trabajadores");

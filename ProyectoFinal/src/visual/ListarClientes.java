@@ -56,7 +56,7 @@ public class ListarClientes extends JDialog {
 								btnEliminar.setEnabled(true);
 								btnModificar.setEnabled(true);
 								int index = table.getSelectedRow();
-								cedula = (String)table.getModel().getValueAt(index, 1);
+								cedula = (String)table.getModel().getValueAt(index, 0);
 							}
 						}
 					});

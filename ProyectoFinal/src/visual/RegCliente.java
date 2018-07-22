@@ -34,9 +34,8 @@ public class RegCliente extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtCedula;
 	private JTextField txtNombre;
-	private JTextField txtDireccion;
 	private Cliente cliente;
-	private JTextArea txtDireccion_1;
+	private JTextField txtDireccion;
 			
 	public RegCliente(Cliente cli) {
 		this.cliente = cli;
@@ -44,17 +43,20 @@ public class RegCliente extends JDialog {
 		if(cli == null){
 			setTitle("Registro de Clientes");
 		}else{
-			  setTitle("Modificar Cliente");	
+			  setTitle("Modificar Clientes");	
 		}		
-		setTitle("Registro de Clientes");
-		setBounds(100, 100, 465, 289);
+		setBounds(100, 100, 465, 221);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			panel.setBorder(new TitledBorder(null, "Registro de Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			if(cli == null) {
+				panel.setBorder(new TitledBorder(null, "Registro de Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			}else {
+				panel.setBorder(new TitledBorder(null, "Modificar Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			}
 			contentPanel.add(panel);
 			panel.setLayout(null);
 			
@@ -83,10 +85,10 @@ public class RegCliente extends JDialog {
 			lblDireccin.setBounds(10, 93, 70, 14);
 			panel.add(lblDireccin);
 			
-			txtDireccion_1 = new JTextArea();
-			txtDireccion_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			txtDireccion_1.setBounds(20, 118, 294, 60);
-			panel.add(txtDireccion_1);
+			txtDireccion = new JTextField();
+			txtDireccion.setColumns(10);
+			txtDireccion.setBounds(10, 117, 304, 20);
+			panel.add(txtDireccion);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -98,13 +100,16 @@ public class RegCliente extends JDialog {
 					 okButton.setText("Registrar");
 					}else{
 					 okButton.setText("Modificar");	
+						txtCedula.setText(cli.getIdentificador());
+						txtNombre.setText(cli.getNombre());
+						txtDireccion.setText(cli.getDireccion());
 					}
 				
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						if(cli==null) {
-							Cliente aux = new Cliente(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText());
-							Empresa.getInstance().insertCliente(aux);
+							Cliente cli = new Cliente(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText());
+							Empresa.getInstance().insertCliente(cli);
 							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
 							clean();
 							}
