@@ -43,6 +43,7 @@ public class RegTrabajador extends JDialog {
 	private JRadioButton rdbprogramador;
 	private JRadioButton rdbplanificador;
 	private JLabel lblNewLabel_4;
+	private JComboBox cbxSexo_1;
 
 	
 	public static void main(String[] args) {
@@ -91,7 +92,7 @@ public class RegTrabajador extends JDialog {
 			}
 			{
 				JLabel lblNewLabel = new JLabel("C\u00E9dula:");
-				lblNewLabel.setBounds(10, 75, 59, 16);
+				lblNewLabel.setBounds(10, 69, 59, 16);
 				panel.add(lblNewLabel);
 			}
 			{
@@ -119,10 +120,10 @@ public class RegTrabajador extends JDialog {
 			lblSexo.setBounds(447, 34, 44, 16);
 			panel.add(lblSexo);
 			
-			JComboBox cbxSexo = new JComboBox();
-			cbxSexo.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Masculino", "Femenino"}));
-			cbxSexo.setBounds(501, 31, 106, 22);
-			panel.add(cbxSexo);
+			cbxSexo_1 = new JComboBox();
+			cbxSexo_1.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Masculino", "Femenino"}));
+			cbxSexo_1.setBounds(501, 31, 106, 22);
+			panel.add(cbxSexo_1);
 			
 			JLabel lblNewLabel_1 = new JLabel("Edad:");
 			lblNewLabel_1.setBounds(447, 75, 44, 16);
@@ -242,14 +243,14 @@ public class RegTrabajador extends JDialog {
 			
 			label.setBounds(513, 166, 56, 16);
 			panel.add(label);
-			rdbjefe.setSelected(true);
+			rdbjefe.setSelected(false);
 			rdbprogramador.setSelected(false);
-			rdbdise.setSelected(false);
+			rdbdise.setSelected(true);
 			rdbplanificador.setSelected(false);
 			txtfrecuenciaTarea.setVisible(false);
 			txtLenguajes.setVisible(false);
-			spnCantTrab.setVisible(true);
-			lblCantidadDeTrabajadores.setVisible(true);
+			spnCantTrab.setVisible(false);
+			lblCantidadDeTrabajadores.setVisible(false);
 			lblLenguajes.setVisible(false);
 			lblNewLabel_4.setVisible(false);
 			
