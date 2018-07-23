@@ -12,6 +12,7 @@ public class Proyecto {
 	private Date fechaIni;
 	private Date fechaFin;
 	private String miCliente;
+	
 	public Proyecto(String nombre, String tipo, String lenguaje, ArrayList<Trabajador> miEquipo,Date fechaIni,Date fechaFin,String miCliente) {
 		super();
 		this.nombre = nombre;

@@ -156,7 +156,7 @@ public class RegProyecto extends JDialog {
 				}
 			}
 		});
-		btnAgregar.setBounds(260, 213, 46, 23);
+		btnAgregar.setBounds(260, 205, 46, 23);
 		contentPanel.add(btnAgregar);
 		
 		JButton btnEliminar = new JButton("<-");

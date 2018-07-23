@@ -118,7 +118,7 @@ public class RegContrato extends JDialog {
 					
 				}
 			});
-			rdbtnSi.setBounds(423, 101, 47, 23);
+			rdbtnSi.setBounds(417, 101, 47, 23);
 			contentPanel.add(rdbtnSi);
 		}
 		{
@@ -132,7 +132,7 @@ public class RegContrato extends JDialog {
 					}
 				}
 			});
-			rdbtnNo.setBounds(472, 101, 56, 23);
+			rdbtnNo.setBounds(466, 101, 56, 23);
 			contentPanel.add(rdbtnNo);
 		}
 		{
@@ -222,6 +222,7 @@ public class RegContrato extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						
 						Empresa.getInstance().getMisProyectos().add(pro);
 						Contrato con = new Contrato(txtNumCont.getText(), Empresa.getInstance().BuscarCliente(pro.getMiCliente()), pro, pro.getFechaIni(), pro.getFechaFin(), Empresa.getInstance().calcularMonto());
 						Empresa.getInstance().getMisContratos().add(con);

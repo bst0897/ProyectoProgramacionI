@@ -12,6 +12,7 @@ public class Contrato {
 	
 	public Contrato(String numCont, Cliente miCliente, Proyecto miProyecto, Date fechaIni,
 			Date fechaFin,float montoPagar) {
+		
 		super();
 		this.numCont = numCont;
 		this.miCliente = miCliente;
