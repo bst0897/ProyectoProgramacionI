@@ -43,7 +43,7 @@ public class RegTrabajador extends JDialog {
 	private JRadioButton rdbprogramador;
 	private JRadioButton rdbplanificador;
 	private JLabel lblNewLabel_4;
-	private JComboBox cbxSexo_1;
+	//private JComboBox cbxSexo_1;
 
 	
 	public static void main(String[] args) {
@@ -120,10 +120,10 @@ public class RegTrabajador extends JDialog {
 			lblSexo.setBounds(447, 34, 44, 16);
 			panel.add(lblSexo);
 			
-			cbxSexo_1 = new JComboBox();
-			cbxSexo_1.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Masculino", "Femenino"}));
-			cbxSexo_1.setBounds(501, 31, 106, 22);
-			panel.add(cbxSexo_1);
+			cbxSexo = new JComboBox();
+			cbxSexo.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Masculino", "Femenino"}));
+			cbxSexo.setBounds(501, 31, 106, 22);
+			panel.add(cbxSexo);
 			
 			JLabel lblNewLabel_1 = new JLabel("Edad:");
 			lblNewLabel_1.setBounds(447, 75, 44, 16);
