@@ -19,6 +19,7 @@ public abstract class Trabajador {
 		this.sexo = sexo;
 		this.edad = edad;
 		this.salario = salario;
+		this.disponible=true;
 	}
 
 	public boolean isDisponible() {

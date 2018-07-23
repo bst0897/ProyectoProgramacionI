@@ -110,9 +110,9 @@ public class RegProyecto extends JDialog {
 		lsTrabDisp.setBounds(52, 189, 161, 96);
 		contentPanel.add(lsTrabDisp);
 		
-		model.addElement("Hola");
+		
 		for (int i = 0; i < Empresa.getInstance().getMisTrabs().size(); i++) {
-			String aux="";
+			String aux=" ";
 			if(Empresa.getInstance().getMisTrabs().get(i).isDisponible()) 
 			{
 				if(Empresa.getInstance().getMisTrabs().get(i) instanceof Diseñador) {
@@ -211,6 +211,7 @@ public class RegProyecto extends JDialog {
 						RegContrato rgContrato = new RegContrato(pro);
 						rgContrato.setVisible(true);
 						rgContrato.setLocationRelativeTo(null);
+						dispose();
 					}
 				});
 				okButton.setActionCommand("OK");

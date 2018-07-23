@@ -123,6 +123,7 @@ public class RegContrato extends JDialog {
 		}
 		{
 			rdbtnNo = new JRadioButton("No");
+			rdbtnNo.setSelected(true);
 			rdbtnNo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if(rdbtnNo.isSelected()) {
