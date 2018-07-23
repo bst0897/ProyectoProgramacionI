@@ -59,6 +59,7 @@ public class RegProyecto extends JDialog {
 		
 		DefaultListModel  model = new DefaultListModel();
 		DefaultListModel  model2 = new DefaultListModel();
+		
 		long millis=System.currentTimeMillis();  
 		java.sql.Date date=new java.sql.Date(millis);
 		
@@ -101,7 +102,6 @@ public class RegProyecto extends JDialog {
 		contentPanel.add(lblCliente);
 		
 		cbxCliente = new JComboBox();
-		cbxCliente.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>"}));
 		cbxCliente.setBounds(138, 58, 157, 20);
 		contentPanel.add(cbxCliente);
 		
@@ -110,21 +110,24 @@ public class RegProyecto extends JDialog {
 		lsTrabDisp.setBounds(52, 189, 161, 96);
 		contentPanel.add(lsTrabDisp);
 		
+		model.addElement("Hola");
 		for (int i = 0; i < Empresa.getInstance().getMisTrabs().size(); i++) {
+			String aux="";
 			if(Empresa.getInstance().getMisTrabs().get(i).isDisponible()) 
 			{
 				if(Empresa.getInstance().getMisTrabs().get(i) instanceof Diseñador) {
-					model.add(i, Empresa.getInstance().getMisTrabs().get(i).getNomCom() + " Diseñador" );
+					aux= " Diseñador" ;
 				}else if (Empresa.getInstance().getMisTrabs().get(i) instanceof Planificador) {
-					model.add(i, Empresa.getInstance().getMisTrabs().get(i).getNomCom() + " Planificador" );
+					aux= " Planificador" ;
 
 				}else if (Empresa.getInstance().getMisTrabs().get(i) instanceof Programador) {
-					model.add(i, Empresa.getInstance().getMisTrabs().get(i).getNomCom() + " Programador" );
+					aux= " Programador" ;
 
 				}else if (Empresa.getInstance().getMisTrabs().get(i) instanceof JefeDeProyecto) {
-					model.add(i, Empresa.getInstance().getMisTrabs().get(i).getNomCom() + " Jefe De Proyecto" );
-
+					aux=" Jefe De Proyecto";
 				}
+				model.add(i, Empresa.getInstance().getMisTrabs().get(i).getNomCom() + aux );
+
 			}
 		}
 		
@@ -144,10 +147,13 @@ public class RegProyecto extends JDialog {
 		JButton btnAgregar = new JButton("->");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String aux = (String)lsTrabDisp.getSelectedValue();
+				if(aux!=null) {
 				
+				model2.addElement(aux);
+				model.removeElementAt(lsTrabDisp.getSelectedIndex());
 				
-				
-				
+				}
 			}
 		});
 		btnAgregar.setBounds(260, 213, 46, 23);
@@ -156,8 +162,11 @@ public class RegProyecto extends JDialog {
 		JButton btnEliminar = new JButton("<-");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				String aux = (String)lsEquipo.getSelectedValue();
+				if(aux!=null) {
+					model.addElement(aux);
+					model2.removeElementAt(lsEquipo.getSelectedIndex());
+				}
 			}
 		});
 		btnEliminar.setBounds(260, 246, 46, 23);
@@ -191,8 +200,14 @@ public class RegProyecto extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						ArrayList<Trabajador> team = new ArrayList<>();
+						for (int i = 0; i < model2.size(); i++) {
+							Trabajador aux = Empresa.getInstance().findTrab(model2.get(i).toString().substring(0, model2.get(i).toString().lastIndexOf(" ")));
+							if(aux!=null) {
+							team.add(aux);
+							}
+						}
+						
 						Proyecto pro = new Proyecto(txtNombre.getText(), cbxTipo.getSelectedItem().toString(),cbxLenguaje.getSelectedItem().toString() , team,date,dateChooser.getDate(),cbxCliente.getSelectedItem().toString());
-						Empresa.getInstance().getMisProyectos().add(pro);
 						RegContrato rgContrato = new RegContrato(pro);
 						rgContrato.setVisible(true);
 						rgContrato.setLocationRelativeTo(null);

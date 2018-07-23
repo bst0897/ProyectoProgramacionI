@@ -116,6 +116,26 @@ public class Empresa {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	public Trabajador findTrab(String name) {
+		Trabajador aux=null;
+		for (Trabajador trab : misTrabs) {
+			if(trab.getNomCom().equalsIgnoreCase(name)) {
+				aux=trab;
+			}
+		}
+		
+		return aux;
+	}
+	
+	public Cliente findCli(String name) {
+		Cliente cli =null;
+		for (Cliente cliente : misClientes) {
+			if(cliente.getNombre().equalsIgnoreCase(name)) {
+				cli=cliente;
+			}
+		}
+		return cli;
+	}
 	
 
 }

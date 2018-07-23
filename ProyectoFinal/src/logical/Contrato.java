@@ -4,18 +4,16 @@ import java.util.Date;
 
 public class Contrato {
 	private String numCont;
-	private String tipoPago;
 	private Cliente miCliente;
 	private Proyecto miProyecto;
 	private Date fechaIni;
 	private Date fechaFin;
 	private float montoPagar;
 	
-	public Contrato(String numCont, String tipoPago, Cliente miCliente, Proyecto miProyecto, Date fechaIni,
+	public Contrato(String numCont, Cliente miCliente, Proyecto miProyecto, Date fechaIni,
 			Date fechaFin,float montoPagar) {
 		super();
 		this.numCont = numCont;
-		this.tipoPago = tipoPago;
 		this.miCliente = miCliente;
 		this.miProyecto = miProyecto;
 		this.setFechaIni(fechaIni);
@@ -42,13 +40,6 @@ public class Contrato {
 		this.numCont = numCont;
 	}
 
-	public String getTipoPago() {
-		return tipoPago;
-	}
-
-	public void setTipoPago(String tipoPago) {
-		this.tipoPago = tipoPago;
-	}
 
 	public Cliente getMiCliente() {
 		return miCliente;
