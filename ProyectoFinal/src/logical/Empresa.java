@@ -10,6 +10,7 @@ public class Empresa {
 	private ArrayList<Cliente> misClientes;
 	private ArrayList<Trabajador> misTrabs;
 	private ArrayList<Contrato> misContratos;
+	private ArrayList<Proyecto> misProyectos;
 	private static Empresa emp = null;
 	
 	private Empresa() {
@@ -17,6 +18,7 @@ public class Empresa {
 		misClientes = new ArrayList<>();
 		misTrabs = new ArrayList<>();
 		misContratos = new ArrayList<>();
+		misProyectos = new ArrayList<>();
 	}
 	
 	 public static Empresa getInstance(){
@@ -26,6 +28,15 @@ public class Empresa {
 		 
 		 return emp;
 	 } 
+	 
+
+	public ArrayList<Proyecto> getMisProyectos() {
+		return misProyectos;
+	}
+
+	public void setMisProyectos(ArrayList<Proyecto> misProyectos) {
+		this.misProyectos = misProyectos;
+	}
 
 	public ArrayList<Cliente> getMisClientes() {
 		return misClientes;
@@ -99,6 +110,11 @@ public class Empresa {
 
 	public void removeCliente(Cliente aux) {
 		misClientes.remove(aux);
+	}
+
+	public float calcularMonto() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 

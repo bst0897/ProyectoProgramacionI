@@ -1,6 +1,7 @@
 package logical;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Proyecto {
 	
@@ -8,15 +9,42 @@ public class Proyecto {
 	private String tipo;
 	private String lenguaje;
 	private ArrayList<Trabajador> miEquipo;
-	private float montoPagar;
-
-	public Proyecto(String nombre, String tipo, String lenguaje, ArrayList<Trabajador> miEquipo, float montoPagar) {
+	private Date fechaIni;
+	private Date fechaFin;
+	private String miCliente;
+	public Proyecto(String nombre, String tipo, String lenguaje, ArrayList<Trabajador> miEquipo,Date fechaIni,Date fechaFin,String miCliente) {
 		super();
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.lenguaje = lenguaje;
 		this.miEquipo = miEquipo;
-		this.montoPagar = montoPagar;
+		this.fechaIni=fechaIni;
+		this.fechaFin=fechaFin;
+		this.miCliente = miCliente;
+	}
+
+	public String getMiCliente() {
+		return miCliente;
+	}
+
+	public void setMiCliente(String miCliente) {
+		this.miCliente = miCliente;
+	}
+
+	public Date getFechaIni() {
+		return fechaIni;
+	}
+
+	public void setFechaIni(Date fechaIni) {
+		this.fechaIni = fechaIni;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 
 	public String getTipo() {
@@ -43,14 +71,7 @@ public class Proyecto {
 		this.miEquipo = miEquipo;
 	}
 
-	public float getMontoPagar() {
-		return montoPagar;
-	}
-
-	public void setMontoPagar(float montoPagar) {
-		this.montoPagar = montoPagar;
-	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}

@@ -9,9 +9,10 @@ public class Contrato {
 	private Proyecto miProyecto;
 	private Date fechaIni;
 	private Date fechaFin;
+	private float montoPagar;
 	
 	public Contrato(String numCont, String tipoPago, Cliente miCliente, Proyecto miProyecto, Date fechaIni,
-			Date fechaFin) {
+			Date fechaFin,float montoPagar) {
 		super();
 		this.numCont = numCont;
 		this.tipoPago = tipoPago;
@@ -19,8 +20,20 @@ public class Contrato {
 		this.miProyecto = miProyecto;
 		this.setFechaIni(fechaIni);
 		this.setFechaFin(fechaFin);
+		this.montoPagar = montoPagar;
 	}
 	
+	
+	public float getMontoPagar() {
+		return montoPagar;
+	}
+
+
+	public void setMontoPagar(float montoPagar) {
+		this.montoPagar = montoPagar;
+	}
+
+
 	public String getNumCont() {
 		return numCont;
 	}
