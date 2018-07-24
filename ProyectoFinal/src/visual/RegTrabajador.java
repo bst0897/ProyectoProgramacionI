@@ -43,7 +43,7 @@ public class RegTrabajador extends JDialog {
 	private JRadioButton rdbprogramador;
 	private JRadioButton rdbplanificador;
 	private JLabel lblNewLabel_4;
-	//private JComboBox cbxSexo_1;
+	
 
 	
 	public static void main(String[] args) {

@@ -209,9 +209,10 @@ public class RegProyecto extends JDialog {
 						
 						Proyecto pro = new Proyecto(txtNombre.getText(), cbxTipo.getSelectedItem().toString(),cbxLenguaje.getSelectedItem().toString() , team,date,dateChooser.getDate(),cbxCliente.getSelectedItem().toString());
 						RegContrato rgContrato = new RegContrato(pro);
-						rgContrato.setVisible(true);
+						
 						rgContrato.setLocationRelativeTo(null);
 						dispose();
+						rgContrato.setVisible(true);
 					}
 				});
 				okButton.setActionCommand("OK");

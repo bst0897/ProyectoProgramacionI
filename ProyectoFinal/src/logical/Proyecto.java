@@ -12,6 +12,7 @@ public class Proyecto {
 	private Date fechaIni;
 	private Date fechaFin;
 	private String miCliente;
+	private String estado;
 	
 	public Proyecto(String nombre, String tipo, String lenguaje, ArrayList<Trabajador> miEquipo,Date fechaIni,Date fechaFin,String miCliente) {
 		super();
@@ -22,7 +23,19 @@ public class Proyecto {
 		this.fechaIni=fechaIni;
 		this.fechaFin=fechaFin;
 		this.miCliente = miCliente;
+		this.estado = "A tiempo";
 	}
+
+	
+	public String getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
 
 	public String getMiCliente() {
 		return miCliente;

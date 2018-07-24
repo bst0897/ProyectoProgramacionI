@@ -24,6 +24,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
 
 public class RegContrato extends JDialog {
@@ -40,14 +41,7 @@ public class RegContrato extends JDialog {
 	private JLabel lblFechaDeProrroga;
 	private JDateChooser dateChooser;
 
-	/**
-	 * Launch the application.
-	 */
 	
-
-	/**
-	 * Create the dialog.
-	 */
 	public RegContrato(Proyecto pro) {
 		DefaultListModel  model = new DefaultListModel();
 
@@ -68,7 +62,7 @@ public class RegContrato extends JDialog {
 			txtMonto.setBounds(401, 245, 86, 20);
 			contentPanel.add(txtMonto);
 			txtMonto.setColumns(10);
-			txtMonto.setText(Float.toString(Empresa.getInstance().calcularMonto()));
+			txtMonto.setText(Float.toString(Empresa.getInstance().calcularMonto(pro)));
 		}
 		{
 			JLabel lblRd = new JLabel("RD$");
@@ -225,8 +219,10 @@ public class RegContrato extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						
 						Empresa.getInstance().getMisProyectos().add(pro);
-						Contrato con = new Contrato(txtNumCont.getText(), Empresa.getInstance().BuscarCliente(pro.getMiCliente()), pro, pro.getFechaIni(), pro.getFechaFin(), Empresa.getInstance().calcularMonto());
+						Contrato con = new Contrato(txtNumCont.getText(), Empresa.getInstance().BuscarCliente(pro.getMiCliente()), pro, pro.getFechaIni(), pro.getFechaFin(), Empresa.getInstance().calcularMonto(pro));
 						Empresa.getInstance().getMisContratos().add(con);
+						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria!", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+						dispose();
 					}
 				});
 				okButton.setActionCommand("OK");

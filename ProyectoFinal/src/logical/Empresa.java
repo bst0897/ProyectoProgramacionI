@@ -112,10 +112,12 @@ public class Empresa {
 		misClientes.remove(aux);
 	}
 
-	public float calcularMonto() {
-		// TODO Auto-generated method stub
-		return 0;
+	public float calcularMonto(Proyecto pro) {
+		float monto=0;
+		//int cantDias = pro.getFechaFin().
+		return monto;
 	}
+	
 	public Trabajador findTrab(String name) {
 		Trabajador aux=null;
 		for (Trabajador trab : misTrabs) {
