@@ -11,6 +11,8 @@ import javax.swing.border.EmptyBorder;
 import logical.Diseñador;
 import logical.Empresa;
 import logical.JefeDeProyecto;
+import logical.Planificador;
+import logical.Programador;
 import logical.Trabajador;
 
 import javax.swing.JLabel;
@@ -143,7 +145,7 @@ public class RegTrabajador extends JDialog {
 			panel.add(txtSueldo);
 			txtSueldo.setColumns(10);
 			
-			JSpinner spnCantTrab = new JSpinner();
+			spnCantTrab = new JSpinner();
 			spnCantTrab.setModel(new SpinnerNumberModel(2, 2, 4, 1));
 			spnCantTrab.setBounds(488, 187, 29, 20);
 			panel.add(spnCantTrab);
@@ -267,11 +269,18 @@ public class RegTrabajador extends JDialog {
 						int edad = new Integer(txtEdad.getText());
 						Double sueldo = new Double(txtSueldo.getText());
 						String sexo = cbxSexo.getSelectedItem().toString();
+						int cantTrab = Integer.valueOf(spnCantTrab.getValue().toString());
 						if(rdbdise.isSelected()) {
 							aux = new Diseñador(txtCedula.getText(), txtNombre.getText(),txtDireccion.getText(), sexo, edad, sueldo);
 						}
 						if(rdbjefe.isSelected()) {
-							aux = new JefeDeProyecto(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), cbxSexo.getSelectedItem().toString(), new Integer(txtEdad.getText()), new Float(txtSueldo.getText()), Integer.valueOf(spnCantTrab.getValue().toString()));
+							aux = new JefeDeProyecto(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, cantTrab);
+						}
+						if(rdbplanificador.isSelected()) {
+							aux = new Planificador(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, new Integer(txtfrecuenciaTarea.getText()));
+						}
+						if(rdbprogramador.isSelected()) {
+					//		aux = new Programador(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, txtLenguajes.getText());
 						}
 						Empresa.getInstance().insertTrabajador(aux);
 						JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);

@@ -112,6 +112,14 @@ public class MainVisual extends JFrame {
 		mnTrabajadores.add(mntmRegistrarTrabajador);
 		
 		JMenuItem mntmListadoDeTrabajadores = new JMenuItem("Listado de Trabajadores");
+		mntmListadoDeTrabajadores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListarTrabajador lstrabajadores = new ListarTrabajador();
+				lstrabajadores.setLocationRelativeTo(null);
+				lstrabajadores.setModal(true);
+				lstrabajadores.setVisible(true);
+			}
+		});
 		mnTrabajadores.add(mntmListadoDeTrabajadores);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
