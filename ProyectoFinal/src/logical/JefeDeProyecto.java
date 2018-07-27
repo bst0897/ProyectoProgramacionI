@@ -1,6 +1,6 @@
 package logical;
 
-public class JefeDeProyecto extends Diseñador {
+public class JefeDeProyecto extends Trabajador {
 
 	private int cantTrabajo;
 	

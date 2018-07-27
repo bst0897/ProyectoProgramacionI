@@ -2,7 +2,7 @@ package logical;
 
 import java.util.ArrayList;
 
-public class Programador extends Diseñador {
+public class Programador extends Trabajador {
 	
     private ArrayList<String> lenguajes; 
     

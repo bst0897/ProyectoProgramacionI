@@ -1,6 +1,6 @@
 package logical;
 
-public class Planificador extends Diseñador {
+public class Planificador extends Trabajador {
 	
 	private int frecuenciaTarea;
 	
