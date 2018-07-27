@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
+import logical.Diseñador;
 import logical.Empresa;
 import logical.JefeDeProyecto;
 import logical.Planificador;
@@ -83,7 +84,7 @@ public class ListarTrabajador extends JDialog {
 				});
 			}
 			tableModel = new DefaultTableModel();
-			String[] columnNames = {"Cedula","Nombre Completo","Dirección", "Edad", "Sexo","Salario", "Su vaina"};
+			String[] columnNames = {"Cedula","Nombre Completo","Dirección", "Edad", "Sexo","Salario", "Cargo"};
 			tableModel.setColumnIdentifiers(columnNames);
 			table.setModel(tableModel);
 			loadTrabajadoresTable(0);
@@ -144,19 +145,34 @@ public class ListarTrabajador extends JDialog {
 				fila[3] = aux.getEdad();
 				fila[4] = aux.getSexo();
 				fila[5] = aux.getSalario();
-			/*	if(aux instanceof JefeDeProyecto) {
-					fila[6] = ((JefeDeProyecto) aux).getCantTrabajo();
+				fila[6] = "Diseñador";
+				if(aux instanceof JefeDeProyecto) {
+					fila[6] = "Jefe de Proyecto";
 				}
 				if(aux instanceof Planificador) {
-					fila[6] = ((Planificador) aux).getFrecuenciaTarea();
+					fila[6] = "Planificador";
 				}
 				if(aux instanceof Programador) {
-					fila[6] = ((Programador) aux).getLenguajes();
-				}*/
+					fila[6] = "Programador";
+				}
 				tableModel.addRow(fila);
 			}
 			break;
 		case 1:
+			for (Trabajador aux : Empresa.getInstance().getMisTrabs()) {
+				if(aux instanceof Diseñador){
+					fila[0] = aux.getId();
+					fila[1] = aux.getNomCom();
+					fila[2] = aux.getDir();
+					fila[3] = aux.getEdad();
+					fila[4] = aux.getSexo();
+					fila[5] = aux.getSalario();
+				tableModel.addRow(fila);
+				}
+			}
+			break;	
+			
+		case 2:
 			for (Trabajador aux : Empresa.getInstance().getMisTrabs()) {
 				if(aux instanceof Planificador){
 					fila[0] = aux.getId();
@@ -170,7 +186,7 @@ public class ListarTrabajador extends JDialog {
 				}
 			}
 			break;	
-		case 2:
+		case 3:
 			for (Trabajador aux : Empresa.getInstance().getMisTrabs()) {
 				if(aux instanceof JefeDeProyecto){
 					fila[0] = aux.getId();
@@ -184,7 +200,7 @@ public class ListarTrabajador extends JDialog {
 				}
 			}
 			break;	
-		case 3:
+		case 4:
 			for (Trabajador aux : Empresa.getInstance().getMisTrabs()) {
 				if(aux instanceof Programador){
 					fila[0] = aux.getId();
