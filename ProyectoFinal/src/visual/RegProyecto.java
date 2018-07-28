@@ -177,9 +177,10 @@ public class RegProyecto extends JDialog {
 		txtFechIni.setBounds(412, 22, 132, 20);
 		contentPanel.add(txtFechIni);
 		txtFechIni.setColumns(10);
-		txtFechIni.setText(date.getDate() + "-"+ date.getMonth() + "-"+(date.getYear()+1900));
+		txtFechIni.setText(date.getDate() + "-"+ (date.getMonth()+1) + "-"+(date.getYear()+1900));
 		
 		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("dd-MM-yyyy");
 		dateChooser.setBounds(412, 55, 132, 20);
 		contentPanel.add(dateChooser);
 		

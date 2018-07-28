@@ -1,6 +1,7 @@
 package logical;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 
@@ -114,7 +115,13 @@ public class Empresa {
 
 	public float calcularMonto(Proyecto pro) {
 		float monto=0;
-		//int cantDias = pro.getFechaFin().
+		int cantDias = daysBetween(pro.getFechaIni(), pro.getFechaFin());
+		float sueldoTot=0;
+		for (Trabajador trab : pro.getMiEquipo()) {
+			sueldoTot+=trab.getSalario();
+		}
+		monto = cantDias*8*sueldoTot;
+		monto *=1.15;
 		return monto;
 	}
 	
@@ -138,6 +145,10 @@ public class Empresa {
 		}
 		return cli;
 	}
+	
+	public int daysBetween(Date d1, Date d2){
+        return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+}
 	
 
 }

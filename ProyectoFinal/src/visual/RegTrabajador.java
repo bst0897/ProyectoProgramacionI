@@ -20,15 +20,23 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JSpinner;
 import javax.swing.JRadioButton;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JFormattedTextField;
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JYearChooser;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
+import javax.swing.ListSelectionModel;
 
 public class RegTrabajador extends JDialog {
 
@@ -36,8 +44,6 @@ public class RegTrabajador extends JDialog {
 	private JTextField txtNombre;
 	private JTextField txtDireccion;
 	private JTextField txtCedula;
-	private JTextField txtLenguajes;
-	private JTextField txtEdad;
 	private JTextField txtSueldo;
 	private JSpinner spnCantTrab;
 	private JComboBox cbxSexo;
@@ -50,8 +56,14 @@ public class RegTrabajador extends JDialog {
 	private JRadioButton rdbplanificador;
 	private JLabel lblNewLabel_4;
 	private JFormattedTextField txtffechanaci;
-	
-
+	private JDateChooser dateChooser;
+	private JList lsLenguajesDisp;
+	private JList lsLengSelec;
+	private JButton btnRemLang;
+	private JButton btnAddLang;
+	private ArrayList<String> lenguajes = new ArrayList<String>();
+	DefaultListModel  model = new DefaultListModel();
+	DefaultListModel  model2 = new DefaultListModel();
 	
 	public static void main(String[] args) {
 		try {
@@ -67,8 +79,11 @@ public class RegTrabajador extends JDialog {
 	 * Create the dialog.
 	 */
 	public RegTrabajador() {
+		
+		
+		
 		setTitle("Registrar Trabajador");
-		setBounds(100, 100, 674, 381);
+		setBounds(100, 100, 662, 365);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -114,15 +129,6 @@ public class RegTrabajador extends JDialog {
 				panel.add(lblPosicion);
 			}
 			
-			JLabel lblLenguajes = new JLabel("Lenguaje Especializacion:");
-			lblLenguajes.setBounds(326, 189, 149, 16);
-			panel.add(lblLenguajes);
-			
-			txtLenguajes = new JTextField();
-			txtLenguajes.setBounds(487, 186, 136, 22);
-			panel.add(txtLenguajes);
-			txtLenguajes.setColumns(10);
-			
 			JLabel lblSexo = new JLabel("Sexo:");
 			lblSexo.setBounds(447, 34, 44, 16);
 			panel.add(lblSexo);
@@ -132,21 +138,12 @@ public class RegTrabajador extends JDialog {
 			cbxSexo.setBounds(501, 31, 106, 22);
 			panel.add(cbxSexo);
 			
-			JLabel lblNewLabel_1 = new JLabel("Edad:");
-			lblNewLabel_1.setBounds(447, 75, 44, 16);
-			panel.add(lblNewLabel_1);
-			
-			txtEdad = new JTextField();
-			txtEdad.setBounds(501, 69, 106, 22);
-			panel.add(txtEdad);
-			txtEdad.setColumns(10);
-			
 			JLabel lblNewLabel_2 = new JLabel("Sueldo:");
-			lblNewLabel_2.setBounds(447, 104, 44, 16);
+			lblNewLabel_2.setBounds(447, 72, 44, 16);
 			panel.add(lblNewLabel_2);
 			
 			txtSueldo = new JTextField();
-			txtSueldo.setBounds(501, 101, 106, 22);
+			txtSueldo.setBounds(501, 69, 106, 22);
 			panel.add(txtSueldo);
 			txtSueldo.setColumns(10);
 			
@@ -160,7 +157,7 @@ public class RegTrabajador extends JDialog {
 			panel.add(lblCantidadDeTrabajadores);
 			
 			JLabel lblNewLabel_3 = new JLabel("$");
-			lblNewLabel_3.setBounds(617, 104, 29, 16);
+			lblNewLabel_3.setBounds(617, 72, 29, 16);
 			panel.add(lblNewLabel_3);
 			
 			rdbjefe = new JRadioButton("Jefe De Proyecto");
@@ -171,11 +168,15 @@ public class RegTrabajador extends JDialog {
 					rdbdise.setSelected(false);
 					rdbplanificador.setSelected(false);
 					txtfrecuenciaTarea.setVisible(false);
-					txtLenguajes.setVisible(false);
 					spnCantTrab.setVisible(true);
 					lblCantidadDeTrabajadores.setVisible(true);
-					lblLenguajes.setVisible(false);
 					lblNewLabel_4.setVisible(false);
+					lsLenguajesDisp.setVisible(false);
+					lsLengSelec.setVisible(false);
+					btnAddLang.setVisible(false);
+					btnRemLang.setVisible(false);
+					
+					
 				}
 			});
 			rdbjefe.setBounds(10, 162, 127, 25);
@@ -189,11 +190,13 @@ public class RegTrabajador extends JDialog {
 					rdbdise.setSelected(true);
 					rdbplanificador.setSelected(false);
 					txtfrecuenciaTarea.setVisible(false);
-					txtLenguajes.setVisible(false);
 					spnCantTrab.setVisible(false);
 					lblCantidadDeTrabajadores.setVisible(false);
-					lblLenguajes.setVisible(false);
 					lblNewLabel_4.setVisible(false);
+					lsLenguajesDisp.setVisible(false);
+					lsLengSelec.setVisible(false);
+					btnAddLang.setVisible(false);
+					btnRemLang.setVisible(false);
 				}
 			});
 			rdbdise.setBounds(190, 162, 106, 25);
@@ -207,11 +210,13 @@ public class RegTrabajador extends JDialog {
 					rdbdise.setSelected(false);
 					rdbplanificador.setSelected(false);
 					txtfrecuenciaTarea.setVisible(false);
-					txtLenguajes.setVisible(true);
 					spnCantTrab.setVisible(false);
 					lblCantidadDeTrabajadores.setVisible(false);
-					lblLenguajes.setVisible(true);
 					lblNewLabel_4.setVisible(false);
+					lsLenguajesDisp.setVisible(true);
+					lsLengSelec.setVisible(true);
+					btnAddLang.setVisible(true);
+					btnRemLang.setVisible(true);
 				}
 			});
 			rdbprogramador.setBounds(10, 201, 127, 25);
@@ -225,11 +230,13 @@ public class RegTrabajador extends JDialog {
 					rdbdise.setSelected(false);
 					rdbplanificador.setSelected(true);
 					txtfrecuenciaTarea.setVisible(true);
-					txtLenguajes.setVisible(false);
 					spnCantTrab.setVisible(false);
 					lblCantidadDeTrabajadores.setVisible(false);
-					lblLenguajes.setVisible(false);
 					lblNewLabel_4.setVisible(true);
+					lsLenguajesDisp.setVisible(false);
+					lsLengSelec.setVisible(false);
+					btnAddLang.setVisible(false);
+					btnRemLang.setVisible(false);
 				}
 				
 			});
@@ -255,21 +262,69 @@ public class RegTrabajador extends JDialog {
 			rdbdise.setSelected(true);
 			rdbplanificador.setSelected(false);
 			
-			DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		//	JFormattedTextField dateTextField = new JFormattedTextField(format);
-			txtffechanaci = new JFormattedTextField(format);
-			txtffechanaci.setBounds(595, 134, -85, 20);
-			panel.add(txtffechanaci);
 			
 			JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
 			lblFechaDeNacimiento.setBounds(364, 137, 127, 16);
 			panel.add(lblFechaDeNacimiento);
+			
+			dateChooser = new JDateChooser();
+			dateChooser.setDateFormatString("dd/MM/yyyy");
+			dateChooser.setBounds(501, 136, 106, 20);
+			panel.add(dateChooser);
+			
+			lsLenguajesDisp = new JList(model);
+			lsLenguajesDisp.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+			lsLenguajesDisp.setBounds(374, 166, 70, 103);
+			panel.add(lsLenguajesDisp);
+		
+			lenguajes.add("Java");
+			lenguajes.add("C/C++");
+			lenguajes.add("C#");
+			lenguajes.add("Python");
+			for (String string : lenguajes) {
+				model.addElement(string);
+			}
+			
+			lsLengSelec = new JList(model2);
+			lsLengSelec.setBounds(537, 166, 70, 103);
+			panel.add(lsLengSelec);
+			
+			btnAddLang = new JButton("->");
+			btnAddLang.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String aux = lsLenguajesDisp.getSelectedValue().toString();
+					if(aux!=null) {
+						model2.addElement(aux);
+						model.removeElementAt(lsLenguajesDisp.getSelectedIndex());
+					}
+					
+				}
+			});
+			btnAddLang.setBounds(467, 186, 50, 23);
+			panel.add(btnAddLang);
+			
+			btnRemLang = new JButton("<-");
+			btnRemLang.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String aux = lsLengSelec.getSelectedValue().toString();
+					if(aux!=null) {
+						model.addElement(aux);
+						model2.removeElementAt(lsLengSelec.getSelectedIndex());
+					}
+				}
+			});
+			btnRemLang.setBounds(467, 220, 50, 23);
+			panel.add(btnRemLang);
+			
 			txtfrecuenciaTarea.setVisible(false);
-			txtLenguajes.setVisible(false);
 			spnCantTrab.setVisible(false);
 			lblCantidadDeTrabajadores.setVisible(false);
-			lblLenguajes.setVisible(false);
 			lblNewLabel_4.setVisible(false);
+			lsLenguajesDisp.setVisible(false);
+			lsLengSelec.setVisible(false);
+			btnAddLang.setVisible(false);
+			btnRemLang.setVisible(false);
+			
 			
 		}
 		{
@@ -281,8 +336,8 @@ public class RegTrabajador extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						Trabajador aux = null;
-						int edad = new Integer(txtEdad.getText());
-					//	int edad = edad(txtffechanaci.getText());
+						//int edad = new Integer(txtEdad.getText());
+					int edad = edad(dateChooser.getDate().getDate() + "/" + (dateChooser.getDate().getMonth()+1)+"/" + (dateChooser.getDate().getYear()+1900));
 						Double sueldo = new Double(txtSueldo.getText());
 						String sexo = cbxSexo.getSelectedItem().toString();
 						int cantTrab = Integer.valueOf(spnCantTrab.getValue().toString());
@@ -296,7 +351,11 @@ public class RegTrabajador extends JDialog {
 							aux = new Planificador(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, new Integer(txtfrecuenciaTarea.getText()));
 						}
 						if(rdbprogramador.isSelected()) {
-					//		aux = new Programador(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, txtLenguajes.getText());
+							ArrayList<String> leng = new ArrayList<>();
+							for (int i = 0; i < model2.size(); i++) {
+								leng.add((String)model2.get(i));
+							}
+					aux = new Programador(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, leng);
 						}
 						Empresa.getInstance().insertTrabajador(aux);
 						JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -323,12 +382,16 @@ public class RegTrabajador extends JDialog {
 	private void clean() {
 		txtCedula.setText("");
 		txtDireccion.setText("");
-		txtEdad.setText("");
 		txtfrecuenciaTarea.setText("");
-		txtLenguajes.setText("");
 		txtNombre.setText("");
 		txtSueldo.setText("");
 		cbxSexo.setSelectedIndex(0);
+		dateChooser.setDate(null);
+		model.removeAllElements();
+		model2.removeAllElements();
+		for (String string : lenguajes) {
+			model.addElement(string);
+		}
 	}
 	
 	public int edad(String fecha_nac) {     //fecha_nac debe tener el formato dd/MM/yyyy  

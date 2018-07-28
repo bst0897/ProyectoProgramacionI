@@ -121,6 +121,21 @@ public class MainVisual extends JFrame {
 			}
 		});
 		mnTrabajadores.add(mntmListadoDeTrabajadores);
+		
+		JMenu mnContratos = new JMenu("Contratos");
+		menuBar.add(mnContratos);
+		
+		JMenuItem mntmListadoDeContratos = new JMenuItem("Listado de Contratos");
+		mntmListadoDeContratos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaContratos lsContratos = new ListaContratos();
+				lsContratos.setVisible(true);
+				lsContratos.setLocationRelativeTo(null);
+
+				
+			}
+		});
+		mnContratos.add(mntmListadoDeContratos);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

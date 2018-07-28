@@ -77,10 +77,10 @@ public class RegContrato extends JDialog {
 		{
 			txtFechIni = new JTextField();
 			txtFechIni.setEditable(false);
-			txtFechIni.setBounds(417, 22, 91, 20);
+			txtFechIni.setBounds(429, 19, 118, 20);
 			contentPanel.add(txtFechIni);
 			txtFechIni.setColumns(10);
-			txtFechIni.setText(pro.getFechaIni().getDate() + "-"+ pro.getFechaIni().getMonth() + "-"+(pro.getFechaIni().getYear()+1900));
+			txtFechIni.setText(pro.getFechaIni().getDate() + "-"+ (pro.getFechaIni().getMonth()+1) + "-"+(pro.getFechaIni().getYear()+1900));
 		}
 		{
 			JLabel lblFechaFin = new JLabel("Fecha Fin:");
@@ -90,15 +90,16 @@ public class RegContrato extends JDialog {
 		{
 			txtFechaFin = new JTextField();
 			txtFechaFin.setEditable(false);
-			txtFechaFin.setBounds(417, 59, 91, 20);
+			txtFechaFin.setBounds(429, 56, 118, 20);
 			contentPanel.add(txtFechaFin);
 			txtFechaFin.setColumns(10);
-			txtFechaFin.setText(pro.getFechaFin().getDate() + "-"+ pro.getFechaFin().getMonth() + "-"+(pro.getFechaFin().getYear()+1900));
+			txtFechaFin.setText(pro.getFechaFin().getDate() + "-"+ (pro.getFechaFin().getMonth()+1) + "-"+(pro.getFechaFin().getYear()+1900));
 		}
 		{
 			JLabel lblProrroga = new JLabel("Prorroga:");
 			lblProrroga.setBounds(309, 101, 56, 14);
 			contentPanel.add(lblProrroga);
+			lblProrroga.setVisible(false);
 		}
 		{
 			rdbtnSi = new JRadioButton("Si");
@@ -112,8 +113,9 @@ public class RegContrato extends JDialog {
 					
 				}
 			});
-			rdbtnSi.setBounds(417, 101, 47, 23);
+			rdbtnSi.setBounds(442, 101, 47, 23);
 			contentPanel.add(rdbtnSi);
+			rdbtnSi.setVisible(false);
 		}
 		{
 			rdbtnNo = new JRadioButton("No");
@@ -127,8 +129,9 @@ public class RegContrato extends JDialog {
 					}
 				}
 			});
-			rdbtnNo.setBounds(466, 101, 56, 23);
+			rdbtnNo.setBounds(491, 101, 56, 23);
 			contentPanel.add(rdbtnNo);
+			rdbtnNo.setVisible(false);
 		}
 		{
 			JLabel lblNumeroDeContrato = new JLabel("Numero de Contrato:");
@@ -176,14 +179,16 @@ public class RegContrato extends JDialog {
 		}
 		{
 			lblFechaDeProrroga = new JLabel("Fecha de Prorroga:");
-			lblFechaDeProrroga.setVisible(false);
 			lblFechaDeProrroga.setBounds(307, 139, 112, 14);
 			contentPanel.add(lblFechaDeProrroga);
+			lblFechaDeProrroga.setVisible(false);
+
 		}
 		
 		dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("dd-MM-yyyy");
 		dateChooser.setVisible(false);
-		dateChooser.setBounds(417, 133, 91, 20);
+		dateChooser.setBounds(429, 133, 118, 20);
 		contentPanel.add(dateChooser);
 		
 		JList list = new JList(model);

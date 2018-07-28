@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicComboBoxUI.ComboBoxLayoutManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
@@ -37,7 +38,6 @@ public class ListarTrabajador extends JDialog {
 	private static JButton btnEliminar;
 	private String cedula;
 	private JComboBox cbxTipoTraba;
-
 	/**
 	 * Launch the application.
 	 */
@@ -139,6 +139,7 @@ public class ListarTrabajador extends JDialog {
 		switch (selection) {
 		case 0:
 			for (Trabajador aux : Empresa.getInstance().getMisTrabs()) {
+				
 				fila[0] = aux.getId();
 				fila[1] = aux.getNomCom();
 				fila[2] = aux.getDir();
@@ -156,7 +157,10 @@ public class ListarTrabajador extends JDialog {
 					fila[6] = "Programador";
 				}
 				tableModel.addRow(fila);
+				String[] columnNames = {"Cedula","Nombre Completo","Dirección", "Edad", "Sexo","Salario", "Cargo"};
+				tableModel.setColumnIdentifiers(columnNames);
 			}
+			
 			break;
 		case 1:
 			for (Trabajador aux : Empresa.getInstance().getMisTrabs()) {
@@ -168,6 +172,10 @@ public class ListarTrabajador extends JDialog {
 					fila[4] = aux.getSexo();
 					fila[5] = aux.getSalario();
 				tableModel.addRow(fila);
+				String[] columnNames = {"Cedula","Nombre Completo","Dirección", "Edad", "Sexo","Salario", "Cargo"};
+				tableModel.setColumnIdentifiers(columnNames);
+				
+
 				}
 			}
 			break;	
@@ -182,6 +190,10 @@ public class ListarTrabajador extends JDialog {
 					fila[4] = aux.getSexo();
 					fila[5] = aux.getSalario();
 					fila[6] = ((Planificador) aux).getFrecuenciaTarea();
+					String[] columnNames = {"Cedula","Nombre Completo","Dirección", "Edad", "Sexo","Salario", "Frecuencia"};
+					tableModel.setColumnIdentifiers(columnNames);
+
+
 				tableModel.addRow(fila);
 				}
 			}
@@ -196,6 +208,8 @@ public class ListarTrabajador extends JDialog {
 					fila[4] = aux.getSexo();
 					fila[5] = aux.getSalario();
 					fila[6] = ((JefeDeProyecto) aux).getCantTrabajo();
+					String[] columnNames = {"Cedula","Nombre Completo","Dirección", "Edad", "Sexo","Salario", "Cantidad de Trabajadores"};
+					tableModel.setColumnIdentifiers(columnNames);
 				tableModel.addRow(fila);
 				}
 			}
@@ -210,6 +224,8 @@ public class ListarTrabajador extends JDialog {
 					fila[4] = aux.getSexo();
 					fila[5] = aux.getSalario();
 					fila[6] = ((Programador) aux).getLenguajes();
+					String[] columnNames = {"Cedula","Nombre Completo","Dirección", "Edad", "Sexo","Salario", "Lenguajes"};
+					tableModel.setColumnIdentifiers(columnNames);
 				tableModel.addRow(fila);
 				}
 			}
