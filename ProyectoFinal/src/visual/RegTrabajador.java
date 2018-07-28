@@ -21,10 +21,14 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JSpinner;
 import javax.swing.JRadioButton;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JFormattedTextField;
 
 public class RegTrabajador extends JDialog {
 
@@ -45,6 +49,7 @@ public class RegTrabajador extends JDialog {
 	private JRadioButton rdbprogramador;
 	private JRadioButton rdbplanificador;
 	private JLabel lblNewLabel_4;
+	private JFormattedTextField txtffechanaci;
 	
 
 	
@@ -249,6 +254,16 @@ public class RegTrabajador extends JDialog {
 			rdbprogramador.setSelected(false);
 			rdbdise.setSelected(true);
 			rdbplanificador.setSelected(false);
+			
+			DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		//	JFormattedTextField dateTextField = new JFormattedTextField(format);
+			txtffechanaci = new JFormattedTextField(format);
+			txtffechanaci.setBounds(595, 134, -85, 20);
+			panel.add(txtffechanaci);
+			
+			JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
+			lblFechaDeNacimiento.setBounds(364, 137, 127, 16);
+			panel.add(lblFechaDeNacimiento);
 			txtfrecuenciaTarea.setVisible(false);
 			txtLenguajes.setVisible(false);
 			spnCantTrab.setVisible(false);
@@ -267,6 +282,7 @@ public class RegTrabajador extends JDialog {
 					public void actionPerformed(ActionEvent arg0) {
 						Trabajador aux = null;
 						int edad = new Integer(txtEdad.getText());
+					//	int edad = edad(txtffechanaci.getText());
 						Double sueldo = new Double(txtSueldo.getText());
 						String sexo = cbxSexo.getSelectedItem().toString();
 						int cantTrab = Integer.valueOf(spnCantTrab.getValue().toString());
@@ -314,4 +330,23 @@ public class RegTrabajador extends JDialog {
 		txtSueldo.setText("");
 		cbxSexo.setSelectedIndex(0);
 	}
+	
+	public int edad(String fecha_nac) {     //fecha_nac debe tener el formato dd/MM/yyyy  
+	    Date fechaActual = new Date();
+	    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+	    String hoy = formato.format(fechaActual);
+	    String[] dat1 = fecha_nac.split("/");
+	    String[] dat2 = hoy.split("/");
+	    int anos = Integer.parseInt(dat2[2]) - Integer.parseInt(dat1[2]);
+	    int mes = Integer.parseInt(dat2[1]) - Integer.parseInt(dat1[1]);
+	    if (mes < 0) {
+	      anos = anos - 1;
+	    } else if (mes == 0) {
+	      int dia = Integer.parseInt(dat2[0]) - Integer.parseInt(dat1[0]);
+	      if (dia > 0) {
+	        anos = anos - 1;
+	      }
+	    }
+	    return anos;
+	  }
 }
