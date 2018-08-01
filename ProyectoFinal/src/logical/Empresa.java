@@ -149,6 +149,20 @@ public class Empresa {
 	public int daysBetween(Date d1, Date d2){
         return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
 }
+
+	public void hacerProrroga(Contrato con) {
+		// TODO Auto-generated method stub
+		
+	}
+	public Contrato findContrato(String num) {
+		Contrato con = null;
+		for (Contrato contrato : misContratos) {
+			if(contrato.getNumCont().equalsIgnoreCase(num)) {
+				con = contrato;
+			}
+		}
+		return con;
+	}
 	
 
 }

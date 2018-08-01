@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import logical.Cliente;
+import logical.Contrato;
 import logical.Empresa;
 
 import javax.swing.JScrollPane;
@@ -16,6 +18,8 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ListaContratos extends JDialog {
 
@@ -23,6 +27,9 @@ public class ListaContratos extends JDialog {
 	private JTable table;
 	private static Object[] fila;
 	private static DefaultTableModel model;
+	private JButton okButton;
+	private String identificador;
+
 
 	/**
 	 * Launch the application.
@@ -55,6 +62,16 @@ public class ListaContratos extends JDialog {
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 					table = new JTable();
+					table.addMouseListener(new MouseAdapter() {
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							if(table.getSelectedRow()>=0) {
+								okButton.setEnabled(true);
+								int index = table.getSelectedRow();
+								identificador = (String)table.getModel().getValueAt(index, 0);
+							}
+						}
+					});
 					scrollPane.setViewportView(table);
 				}
 			}
@@ -70,10 +87,25 @@ public class ListaContratos extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				okButton = new JButton("Modificar");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if(!identificador.equalsIgnoreCase("")) {
+							
+							Contrato con = Empresa.getInstance().findContrato(identificador);
+							RegContrato rgcon = new RegContrato(con.getMiProyecto(), con);
+							rgcon.setVisible(true);
+							rgcon.setLocationRelativeTo(null);
+							loadTable();
+							okButton.setEnabled(false);
+						}
+						
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
+				okButton.setEnabled(false);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");

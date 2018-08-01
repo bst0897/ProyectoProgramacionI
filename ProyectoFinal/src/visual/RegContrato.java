@@ -40,9 +40,20 @@ public class RegContrato extends JDialog {
 	private JRadioButton rdbtnNo;
 	private JLabel lblFechaDeProrroga;
 	private JDateChooser dateChooser;
+	private Contrato con;
+	private JLabel lblProrroga;
 
 	
-	public RegContrato(Proyecto pro) {
+	public RegContrato(Proyecto pro,Contrato con) {
+		
+		
+		this.con=con;
+		if(con==null) {
+			setTitle("Registro de Contrato");
+		}else {
+			setTitle("Modificacion de Contrato");
+		}
+		
 		DefaultListModel  model = new DefaultListModel();
 
 		
@@ -96,7 +107,7 @@ public class RegContrato extends JDialog {
 			txtFechaFin.setText(pro.getFechaFin().getDate() + "-"+ (pro.getFechaFin().getMonth()+1) + "-"+(pro.getFechaFin().getYear()+1900));
 		}
 		{
-			JLabel lblProrroga = new JLabel("Prorroga:");
+			lblProrroga = new JLabel("Prorroga:");
 			lblProrroga.setBounds(309, 101, 56, 14);
 			contentPanel.add(lblProrroga);
 			lblProrroga.setVisible(false);
@@ -132,6 +143,7 @@ public class RegContrato extends JDialog {
 			rdbtnNo.setBounds(491, 101, 56, 23);
 			contentPanel.add(rdbtnNo);
 			rdbtnNo.setVisible(false);
+			
 		}
 		{
 			JLabel lblNumeroDeContrato = new JLabel("Numero de Contrato:");
@@ -191,6 +203,15 @@ public class RegContrato extends JDialog {
 		dateChooser.setBounds(429, 133, 118, 20);
 		contentPanel.add(dateChooser);
 		
+		if(con!=null) {
+			rdbtnNo.setVisible(true);
+			rdbtnSi.setVisible(true);
+			lblProrroga.setVisible(true);
+			lblFechaDeProrroga.setVisible(true);
+			dateChooser.setVisible(true);
+
+		}
+		
 		JList list = new JList(model);
 		list.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		list.setBounds(77, 139, 194, 146);
@@ -220,14 +241,26 @@ public class RegContrato extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				if (con==null) {
+					okButton.setText("Registrar");
+				}else {
+					okButton.setText("Modificar");
+
+				}
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
+						if (con==null) {
 						Empresa.getInstance().getMisProyectos().add(pro);
 						Contrato con = new Contrato(txtNumCont.getText(), Empresa.getInstance().BuscarCliente(pro.getMiCliente()), pro, pro.getFechaIni(), pro.getFechaFin(), Empresa.getInstance().calcularMonto(pro));
 						Empresa.getInstance().getMisContratos().add(con);
 						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria!", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 						dispose();
+						}else {
+							if(rdbtnSi.isSelected()) {
+								Empresa.getInstance().hacerProrroga(con);
+							}
+							
+						}
 					}
 				});
 				okButton.setActionCommand("OK");
