@@ -120,7 +120,7 @@ public class ListaContratos extends JDialog {
 		}
 	}
 
-	private void loadTable() {
+	public static void loadTable() {
 		model.setRowCount(0);
 		fila = new Object[model.getColumnCount()];
 		for (int i = 0; i < Empresa.getInstance().getMisProyectos().size(); i++) {

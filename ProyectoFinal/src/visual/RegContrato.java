@@ -207,8 +207,8 @@ public class RegContrato extends JDialog {
 			rdbtnNo.setVisible(true);
 			rdbtnSi.setVisible(true);
 			lblProrroga.setVisible(true);
-			lblFechaDeProrroga.setVisible(true);
-			dateChooser.setVisible(true);
+			//lblFechaDeProrroga.setVisible(true);
+			//dateChooser.setVisible(true);
 
 		}
 		
@@ -256,8 +256,16 @@ public class RegContrato extends JDialog {
 						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria!", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 						dispose();
 						}else {
+							
+							
 							if(rdbtnSi.isSelected()) {
-								Empresa.getInstance().hacerProrroga(con);
+								
+								Empresa.getInstance().hacerProrroga(con,dateChooser.getDate());
+								JOptionPane.showMessageDialog(null, "Operacion Satisfactoria!", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+								ListaContratos.loadTable();
+								dispose();
+									
+
 							}
 							
 						}

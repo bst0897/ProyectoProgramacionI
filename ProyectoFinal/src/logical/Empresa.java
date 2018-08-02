@@ -150,9 +150,19 @@ public class Empresa {
         return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
 }
 
-	public void hacerProrroga(Contrato con) {
-		// TODO Auto-generated method stub
+	public boolean hacerProrroga(Contrato con,Date d1) {
+		boolean prorroga = false;
+		int dias = daysBetween(con.getFechaFin(), d1);
+		double monto = con.getMontoPagar();
+		if(dias>0) {
+			con.setFechaFin(d1);
+			con.setMontoPagar(monto- (monto*(dias*0.01)));
+			con.getMiProyecto().setEstado("Atrasado");
+			con.getMiProyecto().setFechaFin(d1);
+			prorroga = true;
+		}
 		
+		return prorroga;
 	}
 	public Contrato findContrato(String num) {
 		Contrato con = null;

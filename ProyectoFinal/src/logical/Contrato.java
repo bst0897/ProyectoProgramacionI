@@ -8,7 +8,7 @@ public class Contrato {
 	private Proyecto miProyecto;
 	private Date fechaIni;
 	private Date fechaFin;
-	private float montoPagar;
+	private double montoPagar;
 	
 	public Contrato(String numCont, Cliente miCliente, Proyecto miProyecto, Date fechaIni,
 			Date fechaFin,float montoPagar) {
@@ -23,12 +23,12 @@ public class Contrato {
 	}
 	
 	
-	public float getMontoPagar() {
+	public double getMontoPagar() {
 		return montoPagar;
 	}
 
 
-	public void setMontoPagar(float montoPagar) {
+	public void setMontoPagar(double montoPagar) {
 		this.montoPagar = montoPagar;
 	}
 
