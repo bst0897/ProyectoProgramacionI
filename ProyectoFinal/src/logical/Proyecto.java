@@ -1,10 +1,15 @@
 package logical;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Proyecto {
+public class Proyecto implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3508396068274007524L;
 	private String nombre;
 	private String tipo;
 	private String lenguaje;

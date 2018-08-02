@@ -1,6 +1,12 @@
 package logical;
 
-public abstract class Trabajador {
+import java.io.Serializable;
+
+public abstract class Trabajador implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4429461014725391848L;
 	protected String id;
 	protected String nomCom;
 	protected String dir;

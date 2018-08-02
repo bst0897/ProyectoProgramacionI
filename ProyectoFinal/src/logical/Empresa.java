@@ -13,12 +13,16 @@ import java.util.Date;
 
 public class Empresa implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2415696500563981654L;
 	private ArrayList<Cliente> misClientes;
 	private ArrayList<Trabajador> misTrabs;
 	private ArrayList<Contrato> misContratos;
 	private ArrayList<Proyecto> misProyectos;
 	private static Empresa emp = null;
-	private static final long serialVersionUID = 1L;
+
 
 	
 	private Empresa () {
@@ -29,26 +33,13 @@ public class Empresa implements Serializable{
 		misProyectos = new ArrayList<>();
 	}
 	
+	public static void setInstance(Empresa aux) {
+		emp = aux;
+	}
 	 public static Empresa getInstance(){
 		 if(emp == null){
 			 emp = new Empresa();
 		 }
-		
-		try {
-			FileInputStream f = new FileInputStream("Empresa.dat");
-			 ObjectInputStream oos2 = new ObjectInputStream(f);
-			 emp = (Empresa)oos2.readObject();
-			 oos2.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		 
 		 return emp;
 	 } 

@@ -1,8 +1,13 @@
 package logical;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Contrato {
+public class Contrato implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -59977208240277731L;
 	private String numCont;
 	private Cliente miCliente;
 	private Proyecto miProyecto;

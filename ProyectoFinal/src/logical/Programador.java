@@ -1,8 +1,9 @@
 package logical;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Programador extends Trabajador {
+public class Programador extends Trabajador implements Serializable {
 	
     private ArrayList<String> lenguajes; 
     

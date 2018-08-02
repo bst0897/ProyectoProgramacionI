@@ -1,6 +1,8 @@
 package logical;
 
-public class Planificador extends Trabajador {
+import java.io.Serializable;
+
+public class Planificador extends Trabajador implements Serializable {
 	
 	private int frecuenciaTarea;
 	

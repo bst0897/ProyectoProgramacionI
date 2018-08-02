@@ -100,6 +100,21 @@ public class MainVisual extends JFrame {
 		setBounds(100, 100, 600, 402);
 		setLocationRelativeTo(null);
 		
+		try {
+			FileInputStream f = new FileInputStream("Empresa.dat");
+			 ObjectInputStream oos2 = new ObjectInputStream(f);
+			 Empresa.setInstance((Empresa)oos2.readObject());
+			 oos2.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);

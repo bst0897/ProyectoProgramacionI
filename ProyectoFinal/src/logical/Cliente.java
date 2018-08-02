@@ -1,7 +1,13 @@
 package logical;
 
-public class Cliente {
+import java.io.Serializable;
+
+public class Cliente implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 349428170848058262L;
 	private String identificador;
 	private String nombre;
 	private String direccion;
