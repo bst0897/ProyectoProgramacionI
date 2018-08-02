@@ -14,19 +14,27 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
 import logical.Cliente;
+import logical.Empresa;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.FlowLayout;
 import java.awt.Component;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 public class MainVisual extends JFrame {
@@ -49,6 +57,8 @@ public class MainVisual extends JFrame {
 				try {
 					MainVisual frame = new MainVisual();
 					frame.setVisible(true);
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -62,10 +72,34 @@ public class MainVisual extends JFrame {
 	 */
 	
 	public MainVisual() {
+		addWindowListener(new WindowAdapter() {
+			
+			
+			@Override
+			public void windowClosing(WindowEvent e) {
+				FileOutputStream f;
+				try {
+					f = new FileOutputStream("Empresa.dat");
+					ObjectOutputStream oos = new ObjectOutputStream(f);
+					oos.writeObject(Empresa.getInstance());
+					oos.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					//e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					//e1.printStackTrace();
+				}
+				
+				
+				
+			}
+		});
 		setTitle("NOMBRE DE EMPRESA ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 402);
 		setLocationRelativeTo(null);
+		
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);

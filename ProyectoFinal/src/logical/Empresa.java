@@ -1,20 +1,27 @@
 package logical;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 
 
 
-public class Empresa {
+public class Empresa implements Serializable{
 	
 	private ArrayList<Cliente> misClientes;
 	private ArrayList<Trabajador> misTrabs;
 	private ArrayList<Contrato> misContratos;
 	private ArrayList<Proyecto> misProyectos;
 	private static Empresa emp = null;
+	private static final long serialVersionUID = 1L;
+
 	
-	private Empresa() {
+	private Empresa () {
 		super();
 		misClientes = new ArrayList<>();
 		misTrabs = new ArrayList<>();
@@ -26,6 +33,22 @@ public class Empresa {
 		 if(emp == null){
 			 emp = new Empresa();
 		 }
+		
+		try {
+			FileInputStream f = new FileInputStream("Empresa.dat");
+			 ObjectInputStream oos2 = new ObjectInputStream(f);
+			 emp = (Empresa)oos2.readObject();
+			 oos2.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 
 		 return emp;
 	 } 
