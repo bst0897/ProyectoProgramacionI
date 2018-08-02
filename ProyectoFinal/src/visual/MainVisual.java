@@ -9,12 +9,17 @@ import javax.swing.border.EmptyBorder;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 import logical.Cliente;
 import logical.Empresa;
+
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -29,6 +34,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
+import java.awt.Color;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.FlowLayout;
@@ -41,6 +48,7 @@ public class MainVisual extends JFrame {
 	private JPanel contentPane;
 	
 
+	JPanel panel;
 	private Cliente cliente;
 
 	/**
@@ -48,23 +56,7 @@ public class MainVisual extends JFrame {
 	 */
 	
 	
-	public static void main(String[] args) {
-		
-		
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainVisual frame = new MainVisual();
-					frame.setVisible(true);
-					
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 	
 
 	/**
@@ -72,6 +64,7 @@ public class MainVisual extends JFrame {
 	 */
 	
 	public MainVisual() {
+		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		addWindowListener(new WindowAdapter() {
 			
 			
@@ -219,5 +212,113 @@ public class MainVisual extends JFrame {
 		panel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		contentPane.add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		hindred();
+		braian();
+		lisaril();
+		
 	}
+	
+	  private void hindred() {
+	       panel = new JPanel();
+	       panel.setAlignmentY(Component.TOP_ALIGNMENT);
+	       panel.setAlignmentX(Component.LEFT_ALIGNMENT);
+	       getContentPane().add(panel);
+	        // Fuente de Datos
+	        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+	        dataset.setValue(8, "Web","Web");
+	        dataset.setValue(7, "Sistema Operativo","Sistema Operativo");
+	        dataset.setValue(9, "Adminitracion","Adminitracion");
+	        dataset.setValue(4, "IDE","IDE");
+	        dataset.setValue(4, "Educativo","Educativo");
+	        dataset.setValue(5, "Otro/a","Otro/a");
+	     
+	        // Creando el Grafico
+	        JFreeChart chart = ChartFactory.createBarChart3D
+	        ("Tipos De Software Creados","Tipos", "Cantidad", 
+	        dataset, PlotOrientation.VERTICAL, true,true, false);
+	        chart.setBackgroundPaint(Color.white);
+	        chart.getTitle().setPaint(Color.black); 
+	        CategoryPlot p = chart.getCategoryPlot(); 
+	        p.setRangeGridlinePaint(Color.blue); 
+	        // Mostrar Grafico
+	        ChartPanel chartPanel = new ChartPanel(chart);
+	        panel.add(chartPanel);
+
+	    }
+	
+	  private void braian() {
+	       panel = new JPanel();
+	       panel.setAlignmentY(Component.TOP_ALIGNMENT);
+	       panel.setAlignmentX(Component.RIGHT_ALIGNMENT);
+	       getContentPane().add(panel);
+	        // Fuente de Datos
+	        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+	        dataset.setValue(8, "Ganancia","Ganancia");
+	        dataset.setValue(7, "Perdida","Perdida");
+	      
+	     
+	        // Creando el Grafico
+	        JFreeChart chart = ChartFactory.createBarChart3D
+	        ("Ganancia VS Perdida","Tipo", "Valor $", 
+	        dataset, PlotOrientation.VERTICAL, true,true, false);
+	        chart.setBackgroundPaint(Color.white);
+	        chart.getTitle().setPaint(Color.black); 
+	        CategoryPlot p = chart.getCategoryPlot(); 
+	        p.setRangeGridlinePaint(Color.blue); 
+	        // Mostrar Grafico
+	        ChartPanel chartPanel = new ChartPanel(chart);
+	        panel.add(chartPanel);
+
+	    }
+	  
+	  private void lisaril() {
+	       panel = new JPanel();
+	       panel.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+	       panel.setAlignmentX(Component.LEFT_ALIGNMENT);
+	       getContentPane().add(panel);
+	        // Fuente de Datos
+	        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+	        dataset.setValue(8, "Web","Web");
+	        dataset.setValue(7, "Sistema Operativo","Sistema Operativo");
+	        dataset.setValue(9, "Adminitracion","Adminitracion");
+	        dataset.setValue(4, "IDE","IDE");
+	        dataset.setValue(4, "Educativo","Educativo");
+	      
+	     
+	        // Creando el Grafico
+	        JFreeChart chart = ChartFactory.createBarChart3D
+	        ("5 Mejores Trabajadores ","Nombre", "Puntos", 
+	        dataset, PlotOrientation.VERTICAL, true,true, false);
+	        chart.setBackgroundPaint(Color.white);
+	        chart.getTitle().setPaint(Color.black); 
+	        CategoryPlot p = chart.getCategoryPlot(); 
+	        p.setRangeGridlinePaint(Color.blue); 
+	        // Mostrar Grafico
+	        ChartPanel chartPanel = new ChartPanel(chart);
+	        chartPanel.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+	        chartPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+	        panel.add(chartPanel);
+
+	    }
+	
+	public static void main(String[] args) {
+		
+		
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					 new MainVisual().setVisible(true);
+
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	
+	
+	
 }
