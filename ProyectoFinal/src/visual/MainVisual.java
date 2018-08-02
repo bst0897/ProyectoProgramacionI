@@ -25,44 +25,23 @@ import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import java.awt.FlowLayout;
+import java.awt.Component;
 
 
 public class MainVisual extends JFrame {
 	private JPanel contentPane;
+	
+
 	private Cliente cliente;
 
 	/**
 	 * Launch the application.
 	 */
+	
+	
 	public static void main(String[] args) {
 		
-		 DefaultPieDataset data = new DefaultPieDataset();
-	        data.setValue("C#", 40);
-	        data.setValue("Java", 45);
-	        data.setValue("Python", 15);
-	        data.setValue("C/C++",10);
-	 
-	        // Creando el Grafico
-	        JFreeChart chart = ChartFactory.createPieChart(
-	         "Cantidad de Lenguajes usado por los trabajadores: ", 
-	         data, 
-	         true, 
-	         true, 
-	         false);
-	 
-	        // Mostrar Grafico
-	        
-	        ChartFrame frame = new ChartFrame("JFreeChart", chart);
-	        
-	        try {
-				ChartUtilities.saveChartAsJPEG(new File("grafico.jpg"), chart, 250, 250);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	     
-	        frame.pack();
-	        frame.setVisible(true);
 		
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -76,10 +55,12 @@ public class MainVisual extends JFrame {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the frame.
 	 */
+	
 	public MainVisual() {
 		setTitle("NOMBRE DE EMPRESA ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -181,8 +162,13 @@ public class MainVisual extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(null);
+		panel.setAlignmentY(Component.TOP_ALIGNMENT);
+		panel.setAlignmentX(Component.LEFT_ALIGNMENT);
+		contentPane.add(panel);
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 	}
-	
-
 }
