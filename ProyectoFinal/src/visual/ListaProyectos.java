@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import logical.Contrato;
 import logical.Empresa;
+import logical.Proyecto;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,6 +28,9 @@ public class ListaProyectos extends JDialog {
 	private JTable table;
 	private static Object[] fila;
 	private static DefaultTableModel model;
+	private JButton okButton;
+	private String identificador;
+
 
 	
 	public ListaProyectos() {
@@ -46,7 +51,11 @@ public class ListaProyectos extends JDialog {
 					table.addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							
+							if(table.getSelectedRow()>=0) {
+								okButton.setEnabled(true);
+								int index = table.getSelectedRow();
+								identificador = (String)table.getModel().getValueAt(index, 1);
+							}
 						}
 					});
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -65,11 +74,18 @@ public class ListaProyectos extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnModificar = new JButton("Modificar");
-				buttonPane.add(btnModificar);
-			}
-			{
-				JButton okButton = new JButton("Terminado");
+				okButton = new JButton("Terminado");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+							if(!identificador.equalsIgnoreCase("")) {
+							
+							Proyecto pro = Empresa.getInstance().findProyecto(identificador);
+							pro.setEstado("Terminado");
+							loadTable();
+							okButton.setEnabled(false);
+						}
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);

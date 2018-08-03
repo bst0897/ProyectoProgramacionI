@@ -188,5 +188,24 @@ public class Empresa implements Serializable{
 		return con;
 	}
 	
+	public int puntTrab(String name) {
+		int punt = 0;
+		for (Trabajador trabajador : misTrabs) {
+			if(trabajador.getNomCom().equalsIgnoreCase(name)) {
+				punt=trabajador.getPuntos();
+			}
+		}
+		return punt;
+	}
+	public Proyecto findProyecto(String name) {
+		Proyecto pro = null;
+		for (Proyecto proy : misProyectos) {
+			if(proy.getNombre().equalsIgnoreCase(name)) {
+				pro = proy;
+			}
+		}
+		return pro;
+	}
+	
 
 }

@@ -137,6 +137,7 @@ public class MainVisual extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		proAtrasados();
+		trabAtrasado();
 		DatosGrafica1();
 		DatosGrafica2();
 		DatosGrafica3();
@@ -308,13 +309,13 @@ public class MainVisual extends JFrame {
 	  }
 	  
 	  public void DatosGrafica3() {
-		  /*
+		  
 			trab1=Empresa.getInstance().getInstance().getMisTrabs().get(0).getNomCom();
 			trab2=Empresa.getInstance().getInstance().getMisTrabs().get(1).getNomCom();
 			trab3=Empresa.getInstance().getInstance().getMisTrabs().get(2).getNomCom();
 			trab4=Empresa.getInstance().getInstance().getMisTrabs().get(3).getNomCom();
 			trab5=Empresa.getInstance().getInstance().getMisTrabs().get(4).getNomCom();
-*/
+
 		
 		  
 		  
@@ -380,11 +381,11 @@ public class MainVisual extends JFrame {
 	       getContentPane().add(panel);
 	        // Fuente de Datos
 	        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-	        dataset.setValue(8, trab1,trab1);
-	        dataset.setValue(7, trab2,trab2);
-	        dataset.setValue(9, trab3,trab3);
-	        dataset.setValue(4, trab4,trab4);
-	        dataset.setValue(4, trab5,trab5);
+	        dataset.setValue(Empresa.getInstance().puntTrab(trab1), trab1,trab1);
+	        dataset.setValue(Empresa.getInstance().puntTrab(trab2), trab2,trab2);
+	        dataset.setValue(Empresa.getInstance().puntTrab(trab3), trab3,trab3);
+	        dataset.setValue(Empresa.getInstance().puntTrab(trab4), trab4,trab4);
+	        dataset.setValue(Empresa.getInstance().puntTrab(trab5),trab5,trab5);
 	      
 	     
 	        // Creando el Grafico
@@ -414,12 +415,17 @@ public class MainVisual extends JFrame {
 		}
 	}
 	public void trabAtrasado() {
+		int punt=0;
+		for (Trabajador trab : Empresa.getInstance().getMisTrabs()) {
+			trab.setPuntos(0);
+		}
 		for (Proyecto pro : Empresa.getInstance().getMisProyectos()) {
 			if(pro.getEstado().equalsIgnoreCase("Atrasado")) {
 				for (Trabajador trab : pro.getMiEquipo()) {
 					trab.setProyAtrasados(trab.getProyAtrasados()+1);
 					trab.setEvalAnual("Cumplidor");
 					trab.setPuntos(trab.getPuntos()-1);
+					
 
 					 if(trab.getProyAtrasados()>2) {
 						trab.setEvalAnual("Incumplidor");
