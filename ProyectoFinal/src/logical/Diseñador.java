@@ -8,4 +8,10 @@ public class Diseñador extends Trabajador implements Serializable{
 		super(id, nomCom, dir, sexo, edad, salario);
 	}
 
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

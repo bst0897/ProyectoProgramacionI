@@ -16,5 +16,10 @@ public class Planificador extends Trabajador implements Serializable {
 		super(id, nomCom, dir, sexo, edad, salario);
 		this.frecuenciaTarea = frecuenciaTarea;
 	}
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

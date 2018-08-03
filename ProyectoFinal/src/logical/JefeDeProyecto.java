@@ -20,4 +20,10 @@ public class JefeDeProyecto extends Trabajador implements Serializable{
 		this.cantTrabajo = cantTrabajo;
 	}
 
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

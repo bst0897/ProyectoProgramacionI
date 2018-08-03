@@ -26,4 +26,12 @@ public class Programador extends Trabajador implements Serializable {
 		this.lenguajes = lenguajes;
 	}
 
+
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -2,7 +2,7 @@ package logical;
 
 import java.io.Serializable;
 
-public abstract class Trabajador implements Serializable{
+public abstract class Trabajador implements Serializable,Comparable{
 	/**
 	 * 
 	 */
@@ -16,7 +16,12 @@ public abstract class Trabajador implements Serializable{
 	protected String evalAnual;
 	protected boolean disponible;
 	protected int cantpro;
+	protected int proyAtrasados;
+	protected int puntos;
+
 	
+	
+
 	public Trabajador(String id, String nomCom, String dir, String sexo, int edad, double salario) {
 		super();
 		this.id = id;
@@ -27,8 +32,27 @@ public abstract class Trabajador implements Serializable{
 		this.salario = salario;
 		this.disponible=true;
 		this.cantpro = 0;
+		this.proyAtrasados=0;
+		this.evalAnual="Destacado";
+		this.puntos=0;
+	}
+	
+	public int getPuntos() {
+		return puntos;
 	}
 
+	public void setPuntos(int puntos) {
+		this.puntos = puntos;
+	}
+
+	public int getProyAtrasados() {
+		return proyAtrasados;
+	}
+
+	public void setProyAtrasados(int proyAtrasados) {
+		this.proyAtrasados = proyAtrasados;
+	}
+	
 	public boolean isDisponible() {
 		return disponible;
 	}
@@ -101,5 +125,8 @@ public abstract class Trabajador implements Serializable{
 		this.cantpro = cantpro;
 	}
 	
-
+	public int compareTo(Trabajador trab) {
+		int difPuntos =trab.getPuntos();
+		return difPuntos - this.puntos;
+	}
 }

@@ -21,6 +21,7 @@ import logical.Cliente;
 import logical.Contrato;
 import logical.Empresa;
 import logical.Proyecto;
+import logical.Trabajador;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -33,6 +34,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Collections;
 import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -59,6 +61,11 @@ public class MainVisual extends JFrame {
 	private int otro=0;
 	private double gan=0;
 	private double per=0;
+	private String trab1="";
+	private String trab2="";
+	private String trab3="";
+	private String trab4="";
+	private String trab5="";
 	
 	
 	private JPanel contentPane;
@@ -129,8 +136,11 @@ public class MainVisual extends JFrame {
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		proAtrasados();
 		DatosGrafica1();
 		DatosGrafica2();
+		DatosGrafica3();
+		Collections.sort(Empresa.getInstance().getMisTrabs());
 		
 		JMenu mnProyectos = new JMenu("Proyectos");
 		menuBar.add(mnProyectos);
@@ -296,6 +306,20 @@ public class MainVisual extends JFrame {
 		  gan=aux;
 		  per = perd;
 	  }
+	  
+	  public void DatosGrafica3() {
+		  /*
+			trab1=Empresa.getInstance().getInstance().getMisTrabs().get(0).getNomCom();
+			trab2=Empresa.getInstance().getInstance().getMisTrabs().get(1).getNomCom();
+			trab3=Empresa.getInstance().getInstance().getMisTrabs().get(2).getNomCom();
+			trab4=Empresa.getInstance().getInstance().getMisTrabs().get(3).getNomCom();
+			trab5=Empresa.getInstance().getInstance().getMisTrabs().get(4).getNomCom();
+*/
+		
+		  
+		  
+	  }
+	  
 	  private void hindred() {
 	       panel = new JPanel();
 	       panel.setAlignmentY(Component.TOP_ALIGNMENT);
@@ -356,11 +380,11 @@ public class MainVisual extends JFrame {
 	       getContentPane().add(panel);
 	        // Fuente de Datos
 	        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-	        dataset.setValue(8, "Web","Web");
-	        dataset.setValue(7, "Sistema Operativo","Sistema Operativo");
-	        dataset.setValue(9, "Adminitracion","Adminitracion");
-	        dataset.setValue(4, "IDE","IDE");
-	        dataset.setValue(4, "Educativo","Educativo");
+	        dataset.setValue(8, trab1,trab1);
+	        dataset.setValue(7, trab2,trab2);
+	        dataset.setValue(9, trab3,trab3);
+	        dataset.setValue(4, trab4,trab4);
+	        dataset.setValue(4, trab5,trab5);
 	      
 	     
 	        // Creando el Grafico
@@ -378,7 +402,36 @@ public class MainVisual extends JFrame {
 	        panel.add(chartPanel);
 
 	    }
-	
+	public void proAtrasados() {
+		for (Contrato con : Empresa.getInstance().getMisContratos()) {
+			int days = Empresa.getInstance().daysBetween(con.getFechaIni(), con.getFechaFin());
+			if(days <0) {
+				con.getMiProyecto().setEstado("Atrasado");
+				con.setMontoPagar( con.getMontoPagar() - (days*con.getMontoPagar()*0.01));
+
+				
+			}
+		}
+	}
+	public void trabAtrasado() {
+		for (Proyecto pro : Empresa.getInstance().getMisProyectos()) {
+			if(pro.getEstado().equalsIgnoreCase("Atrasado")) {
+				for (Trabajador trab : pro.getMiEquipo()) {
+					trab.setProyAtrasados(trab.getProyAtrasados()+1);
+					trab.setEvalAnual("Cumplidor");
+					trab.setPuntos(trab.getPuntos()-1);
+
+					 if(trab.getProyAtrasados()>2) {
+						trab.setEvalAnual("Incumplidor");
+					}
+				}
+			}else {
+				for (Trabajador trab : pro.getMiEquipo()) {
+					trab.setPuntos(trab.getPuntos()+1);
+				}
+			}
+		}
+	}
 	
 	
 }
