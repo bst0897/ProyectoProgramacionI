@@ -18,6 +18,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 import logical.Cliente;
+import logical.Contrato;
 import logical.Empresa;
 import logical.Proyecto;
 
@@ -50,12 +51,15 @@ import java.awt.event.WindowEvent;
 
 public class MainVisual extends JFrame {
 	
-	private int web=1;
-	private int sis=1;
-	private int adm=1;
-	private int ide=1;
-	private int edu=1;
-	private int otro=1;
+	private int web=0;
+	private int sis=0;
+	private int adm=0;
+	private int ide=0;
+	private int edu=0;
+	private int otro=0;
+	private double gan=0;
+	private double per=0;
+	
 	
 	private JPanel contentPane;
 	
@@ -76,12 +80,7 @@ public class MainVisual extends JFrame {
 	 */
 	
 	public MainVisual() {
-		web=0;
-		sis=0;
-		adm=0;
-		ide=0;
-		edu=0;
-		otro=0;
+		
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		addWindowListener(new WindowAdapter() {
 			
@@ -131,6 +130,7 @@ public class MainVisual extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		DatosGrafica1();
+		DatosGrafica2();
 		
 		JMenu mnProyectos = new JMenu("Proyectos");
 		menuBar.add(mnProyectos);
@@ -239,6 +239,7 @@ public class MainVisual extends JFrame {
 		
 	}
 	
+	
 	public void DatosGrafica1() {
 		String aux ="";
 		for (Proyecto proyecto : Empresa.getInstance().getMisProyectos()) {
@@ -278,6 +279,23 @@ public class MainVisual extends JFrame {
 			}
 		}
 	}
+	
+	  public void DatosGrafica2() {
+		  double aux=0;
+		  double perd=0;
+		  
+		  for(Contrato contrato : Empresa.getInstance().getMisContratos()) {
+			  
+			  aux+=contrato.getMontoPagar()*0.15;
+			  if(contrato.getMiProyecto().getEstado().equalsIgnoreCase("atrasado")) {
+				  int days = 0;
+				  days = Empresa.getInstance().daysBetween(contrato.getFechaIni(), contrato.getFechaFin());
+				  perd+= (days*contrato.getMontoPagar()*0.01);
+			  }
+		  }
+		  gan=aux;
+		  per = perd;
+	  }
 	  private void hindred() {
 	       panel = new JPanel();
 	       panel.setAlignmentY(Component.TOP_ALIGNMENT);
@@ -313,14 +331,14 @@ public class MainVisual extends JFrame {
 	       getContentPane().add(panel);
 	        // Fuente de Datos
 	        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-	        dataset.setValue(8, "Ganancia","Ganancia");
-	        dataset.setValue(7, "Perdida","Perdida");
+	        dataset.setValue(gan, "Ganancia","Ganancia");
+	        dataset.setValue(per, "Perdida","Perdida");
 	      
 	     
 	        // Creando el Grafico
 	        JFreeChart chart = ChartFactory.createBarChart3D
 	        ("Ganancia VS Perdida","Tipo", "Valor $", 
-	        dataset, PlotOrientation.VERTICAL, true,true, false);
+	        dataset, PlotOrientation.HORIZONTAL, true,true, false);
 	        chart.setBackgroundPaint(Color.white);
 	        chart.getTitle().setPaint(Color.black); 
 	        CategoryPlot p = chart.getCategoryPlot(); 
