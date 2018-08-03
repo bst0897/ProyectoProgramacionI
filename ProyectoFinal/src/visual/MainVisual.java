@@ -76,6 +76,12 @@ public class MainVisual extends JFrame {
 	 */
 	
 	public MainVisual() {
+		web=0;
+		sis=0;
+		adm=0;
+		ide=0;
+		edu=0;
+		otro=0;
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		addWindowListener(new WindowAdapter() {
 			
@@ -100,7 +106,7 @@ public class MainVisual extends JFrame {
 				
 			}
 		});
-		DatosGrafica1();
+		
 		setTitle("BHDL Software Development");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 402);
@@ -124,6 +130,7 @@ public class MainVisual extends JFrame {
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		DatosGrafica1();
 		
 		JMenu mnProyectos = new JMenu("Proyectos");
 		menuBar.add(mnProyectos);
@@ -237,10 +244,10 @@ public class MainVisual extends JFrame {
 		for (Proyecto proyecto : Empresa.getInstance().getMisProyectos()) {
 			
 			aux=  proyecto.getTipo();
-			System.out.println(aux);
+			
 			if (aux.equalsIgnoreCase("Web"))
 			{
-				web=web+2;
+				web++;
 				
 			}
 			if (aux.equalsIgnoreCase("Sistema Operativo"))
