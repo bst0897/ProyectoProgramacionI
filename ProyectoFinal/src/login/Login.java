@@ -22,12 +22,13 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -102,25 +103,28 @@ public class Login extends JFrame {
 		panel.add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(39, 128, 191, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
-		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Control.getInstance().confirmLogin(textField.getText(),textField_1.getText())){
+				if(Control.getInstance().confirmLogin(textField.getText(),passwordField.getText())){
 					MainVisual frame = new MainVisual();
 					dispose();
 					frame.setVisible(true);
 				}else {
-					JOptionPane.showMessageDialog(null, "Este usuaeio o contraseña no es correcto", "Información", JOptionPane.INFORMATION_MESSAGE);
-					dispose();
+					JOptionPane.showMessageDialog(null, "Este usuario o contraseña no es correcto", "Información", JOptionPane.INFORMATION_MESSAGE);
+					clean();
 				}
 			}
 		});
 		btnLogin.setBounds(37, 175, 89, 23);
 		panel.add(btnLogin);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(39, 127, 191, 22);
+		panel.add(passwordField);
+	}
+	public void clean() {
+		textField.setText("");
+		passwordField.setText("");
 	}
 }
