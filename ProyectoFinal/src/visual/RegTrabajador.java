@@ -336,30 +336,33 @@ public class RegTrabajador extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						Trabajador aux = null;
-						//int edad = new Integer(txtEdad.getText());
-					int edad = edad(dateChooser.getDate().getDate() + "/" + (dateChooser.getDate().getMonth()+1)+"/" + (dateChooser.getDate().getYear()+1900));
-						Double sueldo = new Double(txtSueldo.getText());
-						String sexo = cbxSexo.getSelectedItem().toString();
-						int cantTrab = Integer.valueOf(spnCantTrab.getValue().toString());
-						if(rdbdise.isSelected()) {
-							aux = new Diseñador(txtCedula.getText(), txtNombre.getText(),txtDireccion.getText(), sexo, edad, sueldo);
-						}
-						if(rdbjefe.isSelected()) {
-							aux = new JefeDeProyecto(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, cantTrab);
-						}
-						if(rdbplanificador.isSelected()) {
-							aux = new Planificador(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, new Integer(txtfrecuenciaTarea.getText()));
-						}
-						if(rdbprogramador.isSelected()) {
-							ArrayList<String> leng = new ArrayList<>();
-							for (int i = 0; i < model2.size(); i++) {
-								leng.add((String)model2.get(i));
+						if(txtCedula.getText().equalsIgnoreCase("")||txtNombre.getText().equalsIgnoreCase("")||txtDireccion.getText().equalsIgnoreCase("")||cbxSexo.getSelectedIndex()==0||dateChooser.getDate()==null||txtSueldo.getText().equalsIgnoreCase("")) {
+							JOptionPane.showMessageDialog(null, "Debe llenar todos los campos", "Información", JOptionPane.INFORMATION_MESSAGE);
+						}else{
+							int edad = edad(dateChooser.getDate().getDate() + "/" + (dateChooser.getDate().getMonth()+1)+"/" + (dateChooser.getDate().getYear()+1900));
+							Double sueldo = new Double(txtSueldo.getText());
+							String sexo = cbxSexo.getSelectedItem().toString();
+							int cantTrab = Integer.valueOf(spnCantTrab.getValue().toString());
+							if(rdbdise.isSelected()) {
+								aux = new Diseñador(txtCedula.getText(), txtNombre.getText(),txtDireccion.getText(), sexo, edad, sueldo);
 							}
-					aux = new Programador(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, leng);
+							if(rdbjefe.isSelected()) {
+								aux = new JefeDeProyecto(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, cantTrab);
+							}
+							if(rdbplanificador.isSelected()) {
+								aux = new Planificador(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, new Integer(txtfrecuenciaTarea.getText()));
+							}
+							if(rdbprogramador.isSelected()) {
+								ArrayList<String> leng = new ArrayList<>();
+								for (int i = 0; i < model2.size(); i++) {
+									leng.add((String)model2.get(i));
+								}
+						    aux = new Programador(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), sexo, edad, sueldo, leng);
+							}
+							Empresa.getInstance().insertTrabajador(aux);
+							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+							clean();
 						}
-						Empresa.getInstance().insertTrabajador(aux);
-						JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
-						clean();
 					}
 				});
 				okButton.setActionCommand("OK");

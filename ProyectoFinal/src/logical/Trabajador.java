@@ -13,9 +13,9 @@ public abstract class Trabajador implements Serializable{
 	protected String sexo;
 	protected int edad;
 	protected double salario;
-	protected String nomProy;
 	protected String evalAnual;
 	protected boolean disponible;
+	protected int cantpro;
 	
 	public Trabajador(String id, String nomCom, String dir, String sexo, int edad, double salario) {
 		super();
@@ -26,6 +26,7 @@ public abstract class Trabajador implements Serializable{
 		this.edad = edad;
 		this.salario = salario;
 		this.disponible=true;
+		this.cantpro = 0;
 	}
 
 	public boolean isDisponible() {
@@ -84,20 +85,20 @@ public abstract class Trabajador implements Serializable{
 		this.salario = salario;
 	}
 
-	public String getNomProy() {
-		return nomProy;
-	}
-
-	public void setNomProy(String nomProy) {
-		this.nomProy = nomProy;
-	}
-
 	public String getEvalAnual() {
 		return evalAnual;
 	}
 
 	public void setEvalAnual(String evalAnual) {
 		this.evalAnual = evalAnual;
+	}
+
+	public int getCantpro() {
+		return cantpro;
+	}
+
+	public void setCantpro(int cantpro) {
+		this.cantpro = cantpro;
 	}
 	
 

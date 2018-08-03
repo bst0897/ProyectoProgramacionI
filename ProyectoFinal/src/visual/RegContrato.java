@@ -16,6 +16,8 @@ import logical.JefeDeProyecto;
 import logical.Planificador;
 import logical.Programador;
 import logical.Proyecto;
+import logical.Trabajador;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -253,6 +255,33 @@ public class RegContrato extends JDialog {
 						Empresa.getInstance().getMisProyectos().add(pro);
 						Contrato con = new Contrato(txtNumCont.getText(), Empresa.getInstance().BuscarCliente(pro.getMiCliente()), pro, pro.getFechaIni(), pro.getFechaFin(), Empresa.getInstance().calcularMonto(pro));
 						Empresa.getInstance().getMisContratos().add(con);
+						for (Trabajador aux : pro.getMiEquipo()) {
+							if(aux instanceof JefeDeProyecto) {
+								aux.setCantpro(aux.getCantpro()+1);
+								if(aux.getCantpro()==3) {
+									aux.setDisponible(false);
+								}
+							}
+							if(aux instanceof Planificador) {
+								aux.setCantpro(aux.getCantpro()+1);
+								if(aux.getCantpro()==4) {
+									aux.setDisponible(false);
+								}
+							}
+							if(aux instanceof Programador) {
+								aux.setCantpro(aux.getCantpro()+1);
+							}
+							if(aux instanceof Diseñador) {
+								aux.setCantpro(aux.getCantpro()+1);
+								if(aux.getCantpro()==3) {
+									aux.setDisponible(false);
+								}
+							}
+						}
+						Empresa.getInstance().BuscarCliente(pro.getMiCliente()).setCantProyectos(Empresa.getInstance().BuscarCliente(pro.getMiCliente()).getCantProyectos()+1);
+						if(Empresa.getInstance().BuscarCliente(pro.getMiCliente()).getCantProyectos()==5) {
+							Empresa.getInstance().BuscarCliente(pro.getMiCliente()).setDisponible(false);
+						}
 						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria!", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 						dispose();
 						}else {

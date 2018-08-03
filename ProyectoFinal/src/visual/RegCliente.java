@@ -108,11 +108,15 @@ public class RegCliente extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						if(cli==null) {
-							Cliente cli = new Cliente(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText());
-							Empresa.getInstance().insertCliente(cli);
-							JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
-							clean();
+							if(txtCedula.getText().equalsIgnoreCase("")||txtNombre.getText().equalsIgnoreCase("")||txtDireccion.getText().equalsIgnoreCase("")) {
+								JOptionPane.showMessageDialog(null, "Debe llenar todos los campos", "Información", JOptionPane.INFORMATION_MESSAGE);
+							}else{
+								Cliente cli = new Cliente(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText());
+								Empresa.getInstance().insertCliente(cli);
+								JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+								clean();
 							}
+						}
 						else{
 							cli.setIdentificador(txtCedula.getText());
 							cli.setNombre(txtNombre.getText());

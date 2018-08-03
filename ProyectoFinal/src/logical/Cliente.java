@@ -12,12 +12,14 @@ public class Cliente implements Serializable {
 	private String nombre;
 	private String direccion;
 	private int cantProyectos;
+	private boolean disponible;
 	
 	public Cliente(String identificador, String nombre, String direccion) {
 		super();
 		this.identificador = identificador;
 		this.nombre = nombre;
 		this.direccion = direccion;
+		this.disponible=true;
 		
 	}
 
@@ -51,6 +53,14 @@ public class Cliente implements Serializable {
 
 	public void setCantProyectos(int cantProyectos) {
 		this.cantProyectos = cantProyectos;
+	}
+
+	public boolean isDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
 	}
 	
 }
