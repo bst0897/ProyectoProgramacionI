@@ -30,10 +30,12 @@ public class Login extends JFrame {
 	private JTextField textField;
 	private JPasswordField passwordField;
 
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				FileInputStream empresa;
@@ -65,6 +67,7 @@ public class Login extends JFrame {
 				}
 				
 				try {
+					
 					Login frame = new Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -73,11 +76,13 @@ public class Login extends JFrame {
 			}
 		});
 	}
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public Login() {
+		
 		setTitle("Inicio de Sesi\u00F3n");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

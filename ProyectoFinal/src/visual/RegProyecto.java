@@ -64,7 +64,7 @@ public class RegProyecto extends JDialog {
 		java.sql.Date date=new java.sql.Date(millis);
 		
 		setTitle("Proyecto Nuevo");
-		setBounds(100, 100, 570, 368);
+		setBounds(100, 100, 674, 491);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -107,7 +107,7 @@ public class RegProyecto extends JDialog {
 		
 		lsTrabDisp = new JList(model);
 		lsTrabDisp.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		lsTrabDisp.setBounds(52, 189, 161, 96);
+		lsTrabDisp.setBounds(52, 189, 161, 188);
 		contentPanel.add(lsTrabDisp);
 		
 		
@@ -124,7 +124,7 @@ public class RegProyecto extends JDialog {
 					aux= " Programador" ;
 
 				}else if (Empresa.getInstance().getMisTrabs().get(i) instanceof JefeDeProyecto) {
-					aux=" Jefe De Proyecto";
+					aux=" JefeDeProyecto";
 				}
 				model.add(i, Empresa.getInstance().getMisTrabs().get(i).getNomCom() + aux );
 
@@ -133,7 +133,7 @@ public class RegProyecto extends JDialog {
 		
 		lsEquipo = new JList(model2);
 		lsEquipo.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		lsEquipo.setBounds(342, 189, 161, 96);
+		lsEquipo.setBounds(342, 189, 161, 181);
 		contentPanel.add(lsEquipo);
 		
 		JLabel lblTrabajadoresDisponibles = new JLabel("Trabajadores Disponibles");

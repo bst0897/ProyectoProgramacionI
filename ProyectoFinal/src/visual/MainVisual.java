@@ -312,8 +312,8 @@ public class MainVisual extends JFrame {
 		  
 			trab1=Empresa.getInstance().getInstance().getMisTrabs().get(0).getNomCom();
 			trab2=Empresa.getInstance().getInstance().getMisTrabs().get(1).getNomCom();
-			trab3=Empresa.getInstance().getInstance().getMisTrabs().get(2).getNomCom();
-			trab4=Empresa.getInstance().getInstance().getMisTrabs().get(3).getNomCom();
+		 	trab3=Empresa.getInstance().getInstance().getMisTrabs().get(2).getNomCom();
+		    trab4=Empresa.getInstance().getInstance().getMisTrabs().get(3).getNomCom();
 			trab5=Empresa.getInstance().getInstance().getMisTrabs().get(4).getNomCom();
 
 		
@@ -385,7 +385,7 @@ public class MainVisual extends JFrame {
 	        dataset.setValue(Empresa.getInstance().puntTrab(trab2), trab2,trab2);
 	        dataset.setValue(Empresa.getInstance().puntTrab(trab3), trab3,trab3);
 	        dataset.setValue(Empresa.getInstance().puntTrab(trab4), trab4,trab4);
-	        dataset.setValue(Empresa.getInstance().puntTrab(trab5),trab5,trab5);
+	        dataset.setValue(Empresa.getInstance().puntTrab(trab5), trab5,trab5);
 	      
 	     
 	        // Creando el Grafico

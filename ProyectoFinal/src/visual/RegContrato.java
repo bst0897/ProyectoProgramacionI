@@ -226,7 +226,7 @@ public class RegContrato extends JDialog {
 				aux = "Diseñador";
 
 			}else if(pro.getMiEquipo().get(i) instanceof JefeDeProyecto) {
-				aux = "Jefe De Proyecto";
+				aux = "JefeDeProyecto";
 
 			}else if(pro.getMiEquipo().get(i) instanceof Planificador) {
 				aux = "Planificador";
