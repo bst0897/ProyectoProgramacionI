@@ -168,6 +168,16 @@ public class MainVisual extends JFrame {
 		});
 		mnProyectos.add(mntmListadoDeProyectos);
 		
+		JMenuItem mntmProyectosProximos = new JMenuItem("Proyectos Proximos");
+		mntmProyectosProximos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ProyectoProximos proprox = new ProyectoProximos();
+				proprox.setVisible(true);
+				proprox.setLocationRelativeTo(null);
+			}
+		});
+		mnProyectos.add(mntmProyectosProximos);
+		
 		JMenu mnClientes = new JMenu("Clientes");
 		menuBar.add(mnClientes);
 		
