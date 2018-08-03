@@ -310,11 +310,11 @@ public class MainVisual extends JFrame {
 	  
 	  public void DatosGrafica3() {
 		  
-			trab1=Empresa.getInstance().getInstance().getMisTrabs().get(0).getNomCom();
-			trab2=Empresa.getInstance().getInstance().getMisTrabs().get(1).getNomCom();
-		 	trab3=Empresa.getInstance().getInstance().getMisTrabs().get(2).getNomCom();
-		    trab4=Empresa.getInstance().getInstance().getMisTrabs().get(3).getNomCom();
-			trab5=Empresa.getInstance().getInstance().getMisTrabs().get(4).getNomCom();
+			//trab1=Empresa.getInstance().getInstance().getMisTrabs().get(0).getNomCom();
+			//trab2=Empresa.getInstance().getInstance().getMisTrabs().get(1).getNomCom();
+		 	//trab3=Empresa.getInstance().getInstance().getMisTrabs().get(2).getNomCom();
+		    //trab4=Empresa.getInstance().getInstance().getMisTrabs().get(3).getNomCom();
+			//trab5=Empresa.getInstance().getInstance().getMisTrabs().get(4).getNomCom();
 
 		
 		  

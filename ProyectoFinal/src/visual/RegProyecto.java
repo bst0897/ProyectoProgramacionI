@@ -107,7 +107,7 @@ public class RegProyecto extends JDialog {
 		
 		lsTrabDisp = new JList(model);
 		lsTrabDisp.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		lsTrabDisp.setBounds(52, 189, 161, 188);
+		lsTrabDisp.setBounds(52, 189, 202, 188);
 		contentPanel.add(lsTrabDisp);
 		
 		
@@ -133,7 +133,7 @@ public class RegProyecto extends JDialog {
 		
 		lsEquipo = new JList(model2);
 		lsEquipo.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		lsEquipo.setBounds(342, 189, 161, 181);
+		lsEquipo.setBounds(366, 189, 202, 181);
 		contentPanel.add(lsEquipo);
 		
 		JLabel lblTrabajadoresDisponibles = new JLabel("Trabajadores Disponibles");
@@ -141,7 +141,7 @@ public class RegProyecto extends JDialog {
 		contentPanel.add(lblTrabajadoresDisponibles);
 		
 		JLabel lblEquipoDeProyecto = new JLabel("Equipo de Proyecto");
-		lblEquipoDeProyecto.setBounds(377, 164, 111, 14);
+		lblEquipoDeProyecto.setBounds(392, 164, 111, 14);
 		contentPanel.add(lblEquipoDeProyecto);
 		
 		JButton btnAgregar = new JButton("->");
@@ -156,7 +156,7 @@ public class RegProyecto extends JDialog {
 				}
 			}
 		});
-		btnAgregar.setBounds(260, 205, 46, 23);
+		btnAgregar.setBounds(289, 203, 46, 23);
 		contentPanel.add(btnAgregar);
 		
 		JButton btnEliminar = new JButton("<-");
@@ -169,7 +169,7 @@ public class RegProyecto extends JDialog {
 				}
 			}
 		});
-		btnEliminar.setBounds(260, 246, 46, 23);
+		btnEliminar.setBounds(289, 244, 46, 23);
 		contentPanel.add(btnEliminar);
 		
 		txtFechIni = new JTextField();

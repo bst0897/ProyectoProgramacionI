@@ -84,7 +84,7 @@ public class RegContrato extends JDialog {
 		}
 		{
 			JLabel lblFechaInicio = new JLabel("Fecha Inicio:");
-			lblFechaInicio.setBounds(309, 22, 67, 14);
+			lblFechaInicio.setBounds(309, 22, 108, 14);
 			contentPanel.add(lblFechaInicio);
 		}
 		{
@@ -149,7 +149,7 @@ public class RegContrato extends JDialog {
 		}
 		{
 			JLabel lblNumeroDeContrato = new JLabel("Numero de Contrato:");
-			lblNumeroDeContrato.setBounds(21, 22, 112, 14);
+			lblNumeroDeContrato.setBounds(21, 22, 137, 14);
 			contentPanel.add(lblNumeroDeContrato);
 		}
 		{
