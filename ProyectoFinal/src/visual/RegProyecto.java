@@ -237,7 +237,9 @@ public class RegProyecto extends JDialog {
 	
 	private void loadClientes() {
 		for (int i = 0; i < Empresa.getInstance().getMisClientes().size(); i++) {
-			cbxCliente.addItem(new String(Empresa.getInstance().getMisClientes().get(i).getNombre()));	
+			if(Empresa.getInstance().getMisClientes().get(i).isDisponible()) {
+				cbxCliente.addItem(new String(Empresa.getInstance().getMisClientes().get(i).getNombre()));	
+			}
 		}
 		cbxCliente.insertItemAt("<Seleccione>", 0);
 		cbxCliente.setSelectedIndex(0);

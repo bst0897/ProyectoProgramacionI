@@ -278,10 +278,11 @@ public class RegContrato extends JDialog {
 								}
 							}
 						}
-						Empresa.getInstance().BuscarCliente(pro.getMiCliente()).setCantProyectos(Empresa.getInstance().BuscarCliente(pro.getMiCliente()).getCantProyectos()+1);
+						/*Empresa.getInstance().BuscarCliente(pro.getMiCliente()).setCantProyectos(Empresa.getInstance().BuscarCliente(pro.getMiCliente()).getCantProyectos()+1);
 						if(Empresa.getInstance().BuscarCliente(pro.getMiCliente()).getCantProyectos()==5) {
+							
 							Empresa.getInstance().BuscarCliente(pro.getMiCliente()).setDisponible(false);
-						}
+						}*/
 						JOptionPane.showMessageDialog(null, "Operacion Satisfactoria!", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 						dispose();
 						}else {

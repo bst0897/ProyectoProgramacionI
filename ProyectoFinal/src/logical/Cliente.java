@@ -52,7 +52,7 @@ public class Cliente implements Serializable {
 	}
 
 	public void setCantProyectos(int cantProyectos) {
-		this.cantProyectos = cantProyectos;
+		this.cantProyectos = 0;
 	}
 
 	public boolean isDisponible() {
