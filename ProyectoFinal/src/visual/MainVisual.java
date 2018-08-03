@@ -19,7 +19,7 @@ import org.jfree.data.general.DefaultPieDataset;
 
 import logical.Cliente;
 import logical.Empresa;
-
+import logical.Proyecto;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -44,7 +44,19 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 
+
+
+
+
 public class MainVisual extends JFrame {
+	
+	private int web=1;
+	private int sis=1;
+	private int adm=1;
+	private int ide=1;
+	private int edu=1;
+	private int otro=1;
+	
 	private JPanel contentPane;
 	
 
@@ -88,7 +100,8 @@ public class MainVisual extends JFrame {
 				
 			}
 		});
-		setTitle("NOMBRE DE EMPRESA ");
+		DatosGrafica1();
+		setTitle("BHDL Software Development");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 402);
 		setLocationRelativeTo(null);
@@ -216,8 +229,48 @@ public class MainVisual extends JFrame {
 		braian();
 		lisaril();
 		
+		
 	}
 	
+	public void DatosGrafica1() {
+		String aux ="";
+		for (Proyecto proyecto : Empresa.getInstance().getMisProyectos()) {
+			
+			aux=  proyecto.getTipo();
+			System.out.println(aux);
+			if (aux.equalsIgnoreCase("Web"))
+			{
+				web=web+2;
+				
+			}
+			if (aux.equalsIgnoreCase("Sistema Operativo"))
+			{
+				sis++;
+				
+			}
+			
+			if (aux.equalsIgnoreCase("Administracion/Contabilidad"))
+			{
+				adm++;
+				
+			}
+			if (aux.equalsIgnoreCase("IDE"))
+			{
+				ide++;
+				
+			}
+			if (aux.equalsIgnoreCase("Educativo"))
+			{
+				edu++;
+				
+			}
+			if (aux.equalsIgnoreCase("Otro/a"))
+			{
+				otro++;
+				
+			}
+		}
+	}
 	  private void hindred() {
 	       panel = new JPanel();
 	       panel.setAlignmentY(Component.TOP_ALIGNMENT);
@@ -225,12 +278,12 @@ public class MainVisual extends JFrame {
 	       getContentPane().add(panel);
 	        // Fuente de Datos
 	        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-	        dataset.setValue(8, "Web","Web");
-	        dataset.setValue(7, "Sistema Operativo","Sistema Operativo");
-	        dataset.setValue(9, "Adminitracion","Adminitracion");
-	        dataset.setValue(4, "IDE","IDE");
-	        dataset.setValue(4, "Educativo","Educativo");
-	        dataset.setValue(5, "Otro/a","Otro/a");
+	        dataset.setValue(web, "Web","Web");
+	        dataset.setValue(sis, "Sistema Operativo","Sistema Operativo");
+	        dataset.setValue(adm, "Adminitracion","Adminitracion");
+	        dataset.setValue(ide, "IDE","IDE");
+	        dataset.setValue(edu, "Educativo","Educativo");
+	        dataset.setValue(otro, "Otro/a","Otro/a");
 	     
 	        // Creando el Grafico
 	        JFreeChart chart = ChartFactory.createBarChart3D
@@ -322,3 +375,4 @@ public class MainVisual extends JFrame {
 	
 	
 }
+
