@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Proyecto implements Serializable{
+public class Proyecto implements Serializable, Comparable{
 	
 	/**
 	 * 
@@ -97,6 +97,15 @@ public class Proyecto implements Serializable{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+
+	@Override
+	public int compareTo(Object o) {
+		Proyecto pro = (Proyecto)o;
+		int days = Empresa.getInstance().daysBetween(pro.fechaIni, pro.fechaIni);
+		
+		return days - Empresa.getInstance().daysBetween(this.fechaIni, this.fechaFin);
 	}
 	
 
