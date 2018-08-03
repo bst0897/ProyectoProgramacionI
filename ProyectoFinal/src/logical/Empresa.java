@@ -167,11 +167,11 @@ public class Empresa implements Serializable{
 	public boolean hacerProrroga(Contrato con,Date d1) {
 		boolean prorroga = false;
 		int dias = daysBetween(con.getFechaFin(), d1);
-		double monto = con.getMontoPagar();
+		//double monto = con.getMontoPagar();
 		if(dias>0) {
 			con.setFechaFin(d1);
-			con.setMontoPagar(monto- (monto*(dias*0.01)));
-			con.getMiProyecto().setEstado("Atrasado");
+			//con.setMontoPagar(monto- (monto*(dias*0.01)));
+			//con.getMiProyecto().setEstado("Atrasado");
 			con.getMiProyecto().setFechaFin(d1);
 			prorroga = true;
 		}
